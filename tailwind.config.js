@@ -1,15 +1,17 @@
 module.exports = {
-  future: {
-    // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,
+  purge: {
+    content: [
+      "src/*.js",
+      "src/**/*.js",
+      "src/**/*.jsx",
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "public/**/*.html",
+    ],
+    options: {
+      whitelist: ["bg-color-500"],
+    },
   },
-  purge: [
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "public/**/*.html",
-  ],
   theme: {
     extend: {},
   },
