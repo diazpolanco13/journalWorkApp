@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import JournalApp from './JournalApp';
 
 
-ReactDOM.render(
 
-    <App />, 
-  document.getElementById('root')
-);
+ReactDOM.render(<JournalApp />, document.getElementById("root"));

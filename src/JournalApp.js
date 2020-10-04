@@ -1,6 +1,6 @@
 import React from 'react';
 
-function App() {
+function JournalApp() {
   return (
     <div>
       <h1 className="text-4xl font-bold text-gray-700">Hola Mundo!</h1>
@@ -8,4 +8,4 @@ function App() {
   );
 }
 
-export default App;
+export default JournalApp;
