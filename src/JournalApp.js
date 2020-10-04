@@ -1,9 +1,10 @@
 import React from 'react';
+import { AppRouter } from './components/routers/AppRouter';
 
 function JournalApp() {
   return (
     <div>
-      <h1 className="text-4xl font-bold text-gray-700">Hola Mundo!</h1>
+      <AppRouter />
     </div>
   );
 }
