@@ -13,8 +13,27 @@ module.exports = {
     },
   },
   theme: {
-    extend: {},
+    colors: {
+      primary: '#5C62C5',
+      grey: {
+        dark: '#363636',
+        ligth: '#d8d8d8',
+      } 
+    },
+    margin : {
+      default: '1px',
+      '0': '0',
+    },
+     maxHeight: {
+      '0': '0',
+      '1/4': '25%',
+      '1/2': '50%',
+      '3/4': '75%',
+      'full': '100%',
+      }
   },
-  variants: {},
+  variants: {
+    'sans': 'Helvetica, Arial, sans-serif',
+  },
   plugins: [],
 };
