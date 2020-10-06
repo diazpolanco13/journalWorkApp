@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import diario from "../../assets/img/diario.png";
+import logo from "../../assets/img/sebin.png";
 
 export const RegisterScreen = () => {
     return (
       <>
         <div className="flex flex-col justify-center min-w-full min-h-full py-12 bg-gray-50 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
-            <img className="w-20 mx-auto" src={diario} alt="diario" />
+            <img className="w-32 mx-auto" src={logo} alt="diario" />
             <h2 className="mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900">
               Registrate con tus datos
             </h2>
@@ -26,6 +26,7 @@ export const RegisterScreen = () => {
                     <input
                       id="name"
                       type="text"
+                      autoComplete="off"
                       placeholder="Nombre completo"
                       required
                       className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
@@ -44,6 +45,7 @@ export const RegisterScreen = () => {
                       id="email"
                       type="text"
                       placeholder="Correo electronico"
+                      autoComplete="off"
                       required
                       className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
                     />
@@ -81,9 +83,9 @@ export const RegisterScreen = () => {
                   <span className="block w-full rounded-md shadow-sm">
                     <button
                       type="submit"
-                      className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                      className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-blue-800 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:blue-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                     >
-                      Incio de sesión
+                      Registrarse
                     </button>
                   </span>
                 </div>
