@@ -5,10 +5,6 @@ import diario from '../../assets/img/diario.png'
 export const LoginScreen = () => {
     return (
       <>
-        {/*
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
-*/}
         <div className="flex flex-col justify-center min-w-full min-h-full py-12 bg-gray-50 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <img className="w-20 mx-auto" src={diario} alt="diario" />
