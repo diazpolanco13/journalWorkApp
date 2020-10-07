@@ -27,5 +27,9 @@ module.exports = {
     sans: "Helvetica, Arial, sans-serif",
     textDecoration: ["responsive", "hover", "focus", "focus-visible"],
   },
-  plugins: []
+  plugins: [
+    require("@tailwindcss/ui")({
+      layout: "sidebar",
+    }),
+  ],
 };
