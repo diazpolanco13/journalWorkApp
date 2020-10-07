@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { Transition } from "@headlessui/react";
+import React from 'react'
+import { ProfileDropdown } from './ProfileDropdown'
 
 export const NavBar = ({ showSidebar, setShowSidebar }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  
 
   return (
     <>
@@ -31,7 +31,7 @@ export const NavBar = ({ showSidebar, setShowSidebar }) => {
             <div className="flex flex-1">
               <form className="flex w-full md:ml-0" action="/" method="GET">
                 <label htmlFor="search_field" className="sr-only">
-                  Search
+                  Buscador
                 </label>
                 <div className="relative w-full text-gray-400 focus-within:text-gray-600">
                   <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
@@ -50,7 +50,7 @@ export const NavBar = ({ showSidebar, setShowSidebar }) => {
                   <input
                     id="search_field"
                     className="block w-full h-full py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 rounded-md focus:outline-none focus:placeholder-gray-400 sm:text-sm"
-                    placeholder="Search"
+                    placeholder="Buscar"
                     type="search"
                   />
                 </div>
@@ -76,69 +76,8 @@ export const NavBar = ({ showSidebar, setShowSidebar }) => {
                 </svg>
               </button>
 
-              {/*Menú desplegable de perfil */}
-              <div className="relative ml-3">
-                <div>
-                  <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="flex items-center max-w-xs text-sm rounded-full focus:outline-none focus:shadow-outline"
-                    id="user-menu"
-                    aria-label="User menu"
-                    aria-haspopup="true"
-                  >
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                  </button>
-                </div>
-                {/*
-                      Profile dropdown panel, show/hide based on dropdown state.
-                    */}
-                <Transition
-                  show={isOpen}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <div className="absolute right-0 w-48 mt-2 origin-top-right rounded-md shadow-lg">
-                    <div
-                      className="py-1 bg-white rounded-md shadow-xs"
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby="user-menu"
-                    >
-                      <a
-                        href="/auth/login"
-                        className="block px-4 py-2 text-sm text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100"
-                        role="menuitem"
-                      >
-                        Your Profile
-                      </a>
-
-                      <a
-                        href="/"
-                        className="block px-4 py-2 text-sm text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100"
-                        role="menuitem"
-                      >
-                        Settings
-                      </a>
-
-                      <a
-                        href="/"
-                        className="block px-4 py-2 text-sm text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100"
-                        role="menuitem"
-                      >
-                        Sign out
-                      </a>
-                    </div>
-                  </div>
-                </Transition>
-              </div>
+              <ProfileDropdown />
+              
             </div>
           </div>
 

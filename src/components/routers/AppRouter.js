@@ -5,7 +5,7 @@ import {
   Switch, Route,
 } from "react-router-dom";
 import { AuthRouter } from "./AuthRouter";
-import { Dashboard } from "../dashboard/Dashboard";
+import { JournalWork } from "../JournalWork/JournalWork";
 
 
 
@@ -22,7 +22,7 @@ export const AppRouter = () => {
             <Route
               exact
               path="/"
-              component={Dashboard}
+              component={JournalWork}
             />
             <Redirect to="/auth/login" />
           </Switch>
