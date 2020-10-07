@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import logo from '../../assets/img/logo.png'
 
 
-export const JournalScreen = () => {
+export const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
 
