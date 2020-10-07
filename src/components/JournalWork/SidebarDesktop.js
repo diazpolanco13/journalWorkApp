@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import logo from "../../assets/img/logo.png";
 
 
@@ -16,9 +17,9 @@ export const SidebarDesktop = () => {
               </div>
               <div className="flex flex-col flex-1 overflow-y-auto">
                 <nav className="flex-1 px-2 py-4 space-y-1 bg-gray-800">
-                  <a
-                    href="/"
-                    className="flex items-center px-2 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-gray-900 rounded-md group focus:outline-none focus:bg-gray-700"
+                  <Link
+                    to="/"
+                    className="flex items-center px-2 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out rounded-md group focus:outline-none focus:bg-gray-700 active:bg-gray-900"
                   >
                     {/* Heroicon name: home */}
                     <svg
@@ -36,10 +37,10 @@ export const SidebarDesktop = () => {
                       />
                     </svg>
                     Tablero
-                  </a>
+                  </Link>
 
-                  <a
-                    href="/"
+                  <Link
+                    to="/equipo"
                     className="flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                   >
                     {/* Heroicon name: users */}
@@ -58,10 +59,10 @@ export const SidebarDesktop = () => {
                       />
                     </svg>
                     Equipo
-                  </a>
+                  </Link>
 
-                  <a
-                    href="/"
+                  <Link
+                    to="/vehiculos"
                     className="flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                   >
                     {/* Heroicon name: folder */}
@@ -84,10 +85,10 @@ export const SidebarDesktop = () => {
                       />
                     </svg>
                     Vehiculos
-                  </a>
+                  </Link>
 
-                  <a
-                    href="/"
+                  <Link
+                    to="/tareas"
                     className="flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                   >
                     {/* Heroicon name: calendar */}
@@ -106,10 +107,10 @@ export const SidebarDesktop = () => {
                       />
                     </svg>
                     Tareas
-                  </a>
+                  </Link>
 
-                  <a
-                    href="/"
+                  <Link
+                    to="/historial"
                     className="flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                   >
                     {/* Heroicon name: inbox */}
@@ -128,10 +129,10 @@ export const SidebarDesktop = () => {
                       />
                     </svg>
                     Historial
-                  </a>
+                  </Link>
 
-                  <a
-                    href="/"
+                  <Link
+                    to="/reportes"
                     className="flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                   >
                     {/* Heroicon name: chart-bar */}
@@ -149,8 +150,8 @@ export const SidebarDesktop = () => {
                         d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                       />
                     </svg>
-                    Reporte
-                  </a>
+                    Reportes
+                  </Link>
                 </nav>
               </div>
             </div>

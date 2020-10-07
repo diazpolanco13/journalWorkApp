@@ -2,7 +2,14 @@ import React, { useState } from 'react'
 import { SidebarMovil } from './SidebarMovil';
 import { SidebarDesktop } from './SidebarDesktop';
 import { NavBar } from './NavBar';
-import { Dashboard } from "./Dashboard";
+import { Vehiculos } from "../dashboards/Vehiculos";
+import { Equipo } from "../dashboards/Equipo";
+import { Link, Route, Router} from 'react-router-dom';
+import { Switch } from '@headlessui/react';
+import { Historial } from '../dashboards/Historial';
+import { Reportes } from '../dashboards/Reportes';
+import { Tareas } from '../dashboards/Tareas';
+import { Tablero } from '../dashboards/Tablero';
 
 
 export const JournalWork = () => {
@@ -27,7 +34,33 @@ export const JournalWork = () => {
             setShowSidebar={setShowSidebar}
           />
           
-          <Dashboard />
+          <>
+            <Route
+                exact
+                path="/"
+                component={Tablero}
+              />
+              <Route
+                path="/equipo"
+                component={Equipo}
+              />
+              <Route
+                path="/vehiculos"
+                component={Vehiculos}
+              />
+              <Route
+                path="/historial"
+                component={Historial}
+              />
+              <Route
+                path="/reportes"
+                component={Reportes}
+              />
+              <Route
+                path="/tareas"
+                component={Tareas}
+              />
+          </>
         </div>
       </div>
     </>

@@ -15,15 +15,13 @@ export const AppRouter = () => {
       <Router>
         <div>
           <Switch>
-            <Route
-              path="/auth"
-              component={AuthRouter}
-            />
-            <Route
-              exact
-              path="/"
-              component={JournalWork}
-            />
+            <Route path="/auth" component={AuthRouter} />
+            <Route path="/equipo" component={JournalWork} />
+            <Route path="/vehiculos" component={JournalWork} />
+            <Route path="/reportes" component={JournalWork} />
+            <Route path="/tareas" component={JournalWork} />
+            <Route path="/historial" component={JournalWork} />
+            <Route exact path="/" component={JournalWork} />
             <Redirect to="/auth/login" />
           </Switch>
         </div>
