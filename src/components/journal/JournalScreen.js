@@ -13,27 +13,27 @@ export const JournalScreen = () => {
           <Transition show={showSidebar}>
             <div className="md:hidden">
               <div className="fixed inset-0 z-40 flex">
-                  {/* menú de lienzo para dispositivos móviles, mostrar / ocultar según el estado del menú fuera del lienzo */}
+                {/* menú de lienzo para dispositivos móviles, mostrar / ocultar según el estado del menú fuera del lienzo */}
                 <Transition.Child
                   enter="transition-opacity ease-linear duration-300"
                   enterFrom="opacity-0"
                   enterTo="opacity-100"
                   leave="transition-opacity ease-linear duration-300"
                   leaveFrom="opacity-100"
-                  leaveto="opacity-0"
-                  >
+                  leaveTo="opacity-0"
+                >
                   <div className="fixed inset-0">
                     <div className="absolute inset-0 bg-gray-600 opacity-75"></div>
                   </div>
                 </Transition.Child>
-                  {/* El menú fuera del lienzo cubre, muestra / oculta según el estado del menú fuera del lienzo */}
+                {/* El menú fuera del lienzo cubre, muestra / oculta según el estado del menú fuera del lienzo */}
                 <Transition.Child
                   enter="transition ease-in-out duration-300 transform"
                   enterFrom="-translate-x-full"
                   enterTo="translate-x-0"
                   leave="transition ease-in-out duration-300 transform"
                   leaveFrom="translate-x-0"
-                  leaveto="-translate-x-full"
+                  leaveTo="-translate-x-full"
                 >
                   <div className="relative flex flex-col flex-1 w-64 h-screen max-w-xs pt-5 pb-4 bg-gray-800">
                     <div className="absolute top-0 right-0 p-1 -mr-14">
@@ -452,7 +452,7 @@ export const JournalScreen = () => {
                       enterTo="transform opacity-100 scale-100"
                       leave="transition ease-in duration-75"
                       leaveFrom="transform opacity-100 scale-100"
-                      leaveto="transform opacity-0 scale-95"
+                      leaveTo="transform opacity-0 scale-95"
                     >
                       <div className="absolute right-0 w-48 mt-2 origin-top-right rounded-md shadow-lg">
                         <div
