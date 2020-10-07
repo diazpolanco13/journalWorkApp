@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/img/sebin.png";
+import logo from "../../assets/img/logo.png";
 
 export const LoginScreen = () => {
   return (
