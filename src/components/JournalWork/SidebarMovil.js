@@ -1,6 +1,7 @@
 import React from 'react'
 import { Transition } from "@headlessui/react";
 import logo from "../../assets/img/logo.png";
+import { Link } from 'react-router-dom';
 
 
 export const SidebarMovil = ({ showSidebar, setShowSidebar }) => {
@@ -60,8 +61,8 @@ export const SidebarMovil = ({ showSidebar, setShowSidebar }) => {
                 </div>
                 <div className="flex-1 h-0 mt-5 overflow-y-auto">
                   <nav className="px-2 space-y-1">
-                    <a
-                      href="/"
+                    <Link
+                      to="/"
                       className="flex items-center px-2 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-gray-900 rounded-md group focus:outline-none focus:bg-gray-700"
                     >
                       {/* Heroicon name: home */}
@@ -80,10 +81,10 @@ export const SidebarMovil = ({ showSidebar, setShowSidebar }) => {
                         />
                       </svg>
                       Tablero
-                    </a>
+                    </Link>
 
-                    <a
-                      href="/"
+                    <Link
+                      to="/equipo"
                       className="flex items-center px-2 py-2 text-base font-medium leading-6 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                     >
                       {/* Heroicon name: users */}
@@ -102,10 +103,10 @@ export const SidebarMovil = ({ showSidebar, setShowSidebar }) => {
                         />
                       </svg>
                       Equipo
-                    </a>
+                    </Link>
 
-                    <a
-                      href="/"
+                    <Link
+                      to="/vehiculos"
                       className="flex items-center px-2 py-2 text-base font-medium leading-6 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                     >
                       {/* Heroicon name: folder */}
@@ -123,11 +124,11 @@ export const SidebarMovil = ({ showSidebar, setShowSidebar }) => {
                           d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
                         />
                       </svg>
-                      Trabajo
-                    </a>
+                      Vehiculos
+                    </Link>
 
-                    <a
-                      href="/"
+                    <Link
+                      to="/tareas"
                       className="flex items-center px-2 py-2 text-base font-medium leading-6 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                     >
                       {/* Heroicon name: calendar */}
@@ -146,10 +147,10 @@ export const SidebarMovil = ({ showSidebar, setShowSidebar }) => {
                         />
                       </svg>
                       Tareas
-                    </a>
+                    </Link>
 
-                    <a
-                      href="/"
+                    <Link
+                      to="/historial"
                       className="flex items-center px-2 py-2 text-base font-medium leading-6 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                     >
                       {/* Heroicon name: inbox */}
@@ -168,10 +169,10 @@ export const SidebarMovil = ({ showSidebar, setShowSidebar }) => {
                         />
                       </svg>
                       Historial
-                    </a>
+                    </Link>
 
-                    <a
-                      href="/"
+                    <Link
+                      to="/reportes"
                       className="flex items-center px-2 py-2 text-base font-medium leading-6 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                     >
                       {/* Heroicon name: chart-bar */}
@@ -190,7 +191,7 @@ export const SidebarMovil = ({ showSidebar, setShowSidebar }) => {
                         />
                       </svg>
                       Reportes
-                    </a>
+                    </Link>
                   </nav>
                 </div>
               </div>

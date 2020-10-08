@@ -4,8 +4,7 @@ import { SidebarDesktop } from './SidebarDesktop';
 import { NavBar } from './NavBar';
 import { Vehiculos } from "../dashboards/Vehiculos";
 import { Equipo } from "../dashboards/Equipo";
-import { Link, Route, Router} from 'react-router-dom';
-import { Switch } from '@headlessui/react';
+import { Route, Switch } from "react-router-dom";
 import { Historial } from '../dashboards/Historial';
 import { Reportes } from '../dashboards/Reportes';
 import { Tareas } from '../dashboards/Tareas';
@@ -34,7 +33,7 @@ export const JournalWork = () => {
             setShowSidebar={setShowSidebar}
           />
           
-          <>
+          <Switch>
             <Route
                 exact
                 path="/"
@@ -60,7 +59,7 @@ export const JournalWork = () => {
                 path="/tareas"
                 component={Tareas}
               />
-          </>
+          </Switch>
         </div>
       </div>
     </>
