@@ -18,8 +18,9 @@ export const SidebarDesktop = () => {
               <div className="flex flex-col flex-1 overflow-y-auto">
                 <nav className="flex-1 px-2 py-4 space-y-1 bg-gray-800">
                   <Link
+                    selected
                     to="/"
-                    className="flex items-center px-2 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out rounded-md group focus:outline-none focus:bg-gray-700 active:bg-gray-900"
+                    className="flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-150 ease-in-out rounded-md group hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 visited:bg-red-900"
                   >
                     {/* Heroicon name: home */}
                     <svg

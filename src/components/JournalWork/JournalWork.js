@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { SidebarMovil } from './SidebarMovil';
 import { SidebarDesktop } from './SidebarDesktop';
 import { NavBar } from './NavBar';
-import { Vehiculos } from "../dashboards/Vehiculos";
-import { Equipo } from "../dashboards/Equipo";
+import { Vehiculos } from "../dashboards/vehiculos/Vehiculos";
+import { Equipo } from "../dashboards/equipo/Equipo";
 import { Route, Switch } from "react-router-dom";
-import { Historial } from '../dashboards/Historial';
-import { Reportes } from '../dashboards/Reportes';
-import { Tareas } from '../dashboards/Tareas';
-import { Tablero } from '../dashboards/Tablero';
+import { Historial } from '../dashboards/historial/Historial';
+import { Reportes } from '../dashboards/reportes/Reportes';
+import { Tareas } from '../dashboards/tareas/Tareas';
+import { Tablero } from '../dashboards/tablero/Tablero';
 
 
 export const JournalWork = () => {
@@ -35,6 +35,7 @@ export const JournalWork = () => {
           
           <Switch>
             <Route
+                selected
                 exact
                 path="/"
                 component={Tablero}

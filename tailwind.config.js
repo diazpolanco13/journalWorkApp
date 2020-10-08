@@ -25,6 +25,7 @@ module.exports = {
   },
   variants: {
     sans: "Helvetica, Arial, sans-serif",
+    backgroundColor: ["responsive", "hover", "focus", "active", "focus-visible"],
     textDecoration: ["responsive", "hover", "focus", "focus-visible"],
   },
   plugins: [
