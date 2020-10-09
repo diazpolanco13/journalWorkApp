@@ -3,10 +3,9 @@ import { Transition } from "@headlessui/react";
 import { ListaTareas } from "./ListaTareas";
 import { TransitionContext } from "../../context/TransitionContext";
 
-export const NuevaTarea = () => {
-
-    const {isOn, setIsOn} = useContext(TransitionContext);
+export const SidebarDeTareas = () => {
   
+  const { isOn, setIsOn } = useContext(TransitionContext);
 
   return (
     <>
@@ -53,6 +52,7 @@ export const NuevaTarea = () => {
                                 strokeWidth="2"
                                 d="M6 18L18 6M6 6l12 12"
                               />
+                              s
                             </svg>
                           </button>
                         </div>
@@ -147,7 +147,7 @@ export const NuevaTarea = () => {
                           </div>
                           <fieldset className="space-y-2">
                             <legend className="text-sm font-medium leading-5 text-gray-900">
-                              Privacidad
+                              Estatus:
                             </legend>
                             <div className="space-y-5">
                               <div className="relative flex items-start">
@@ -156,7 +156,7 @@ export const NuevaTarea = () => {
                                     id="privacy_public"
                                     aria-describedby="privacy_public_description"
                                     type="radio"
-                                    name="privacy"
+                                    name="incomplete"
                                     className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
                                   />
                                 </div>
@@ -165,13 +165,38 @@ export const NuevaTarea = () => {
                                     htmlFor="privacy_public"
                                     className="font-medium text-gray-900"
                                   >
-                                    Privado
+                                    En proceso
                                   </label>
                                   <p
                                     id="privacy_public_description"
                                     className="text-gray-500"
                                   >
-                                    Solo usted puede ver la tarea
+                                    Tarea por completar
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="relative flex items-start">
+                                <div className="absolute flex items-center h-5">
+                                  <input
+                                    id="privacy_public"
+                                    aria-describedby="privacy_public_description"
+                                    type="radio"
+                                    name="complete"
+                                    className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
+                                  />
+                                </div>
+                                <div className="text-sm leading-5 pl-7">
+                                  <label
+                                    htmlFor="privacy_public"
+                                    className="font-medium text-gray-900"
+                                  >
+                                    Completada
+                                  </label>
+                                  <p
+                                    id="privacy_public_description"
+                                    className="text-gray-500"
+                                  >
+                                    Marque al completar
                                   </p>
                                 </div>
                               </div>
@@ -182,7 +207,7 @@ export const NuevaTarea = () => {
                                       id="privacy_private-to-project"
                                       aria-describedby="privacy_private-to-project_description"
                                       type="radio"
-                                      name="privacy"
+                                      name="cancel"
                                       className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
                                     />
                                   </div>
@@ -191,7 +216,7 @@ export const NuevaTarea = () => {
                                       htmlFor="privacy_private-to-project"
                                       className="font-medium text-gray-900"
                                     >
-                                      Público
+                                      Cancelada
                                     </label>
                                     <p
                                       id="privacy_private-to-project_description"
@@ -207,7 +232,7 @@ export const NuevaTarea = () => {
                           </fieldset>
                           <div className="mt-6 mb-4 ml-4 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                             <label
-                             htmlFor="cover_photo"
+                              htmlFor="cover_photo"
                               className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
                             >
                               Foto

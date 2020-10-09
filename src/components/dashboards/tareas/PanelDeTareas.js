@@ -1,11 +1,9 @@
 import React from 'react'
-import { NuevaTarea } from './NuevaTarea'
+import { SidebarDeTareas } from "./SidebarDeTareas";
 
 
 
-export const Tareas = () => {
-
-
+export const PanelDeTareas = () => {
   return (
     <>
       <main
@@ -13,7 +11,7 @@ export const Tareas = () => {
         tabIndex="0"
       >
         <div className="pt-2 pb-6 md:py-6">
-             <NuevaTarea />
+          <SidebarDeTareas />
         </div>
       </main>
     </>

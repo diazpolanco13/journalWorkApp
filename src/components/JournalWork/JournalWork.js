@@ -7,13 +7,13 @@ import { Equipo } from "../dashboards/equipo/Equipo";
 import { Route, Switch } from "react-router-dom";
 import { Historial } from "../dashboards/historial/Historial";
 import { Reportes } from "../dashboards/reportes/Reportes";
-import { Tareas } from "../dashboards/tareas/Tareas";
+import { PanelDeTareas } from "../dashboards/tareas/PanelDeTareas";
 import { Tablero } from "../dashboards/tablero/Tablero";
 import { TransitionContext } from "../context/TransitionContext";
 
 export const JournalWork = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [isOn, setIsOn] = useState(true);
+  const [isOn, setIsOn] = useState(false);
 
   return (
     <>
@@ -25,7 +25,7 @@ export const JournalWork = () => {
             showSidebar,
             setShowSidebar,
             isOn,
-            setIsOn
+            setIsOn,
           }}
         >
           <SidebarMovil />
@@ -42,7 +42,7 @@ export const JournalWork = () => {
               <Route path="/vehiculos" component={Vehiculos} />
               <Route path="/historial" component={Historial} />
               <Route path="/reportes" component={Reportes} />
-              <Route path="/tareas" component={Tareas} />
+              <Route path="/tareas" component={PanelDeTareas} />
             </Switch>
           </div>
         </TransitionContext.Provider>
