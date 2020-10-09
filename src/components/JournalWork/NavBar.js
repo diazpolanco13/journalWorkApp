@@ -1,8 +1,11 @@
 import React from 'react'
+import { useContext } from 'react';
+import { TransitionContext } from '../context/TransitionContext';
 import { ProfileDropdown } from './ProfileDropdown'
 
-export const NavBar = ({ showSidebar, setShowSidebar }) => {
+export const NavBar = () => {
   
+  const { showSidebar, setShowSidebar } = useContext(TransitionContext);
 
   return (
     <>

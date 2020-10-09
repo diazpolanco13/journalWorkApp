@@ -1,8 +1,11 @@
 import React from 'react'
 import { NuevaTarea } from './NuevaTarea'
-// import { ListaTareas } from "./ListaTareas";
+
+
 
 export const Tareas = () => {
+
+
   return (
     <>
       <main
@@ -10,9 +13,10 @@ export const Tareas = () => {
         tabIndex="0"
       >
         <div className="pt-2 pb-6 md:py-6">
-          <NuevaTarea />
+             <NuevaTarea />
         </div>
       </main>
     </>
   );
 };
+ 

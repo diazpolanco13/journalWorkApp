@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Transition } from "@headlessui/react";
 import logo from "../../assets/img/logo.png";
 import { Link } from 'react-router-dom';
+import { TransitionContext } from '../context/TransitionContext';
 
 
-export const SidebarMovil = ({ showSidebar, setShowSidebar }) => {
+export const SidebarMovil = () => {
+
+  const { showSidebar, setShowSidebar } = useContext(TransitionContext);
 
   return (
     <>
