@@ -77,6 +77,7 @@ export const SidebarDeTareas = () => {
                             <div className="relative rounded-md shadow-sm">
                               <input
                                 id="project_name"
+                                placeholder="Titulo de la tarea"
                                 className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                               />
                             </div>
@@ -92,6 +93,7 @@ export const SidebarDeTareas = () => {
                               <textarea
                                 id="description"
                                 rows="4"
+                                placeholder="Agregue una descripción"
                                 className="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                               ></textarea>
                             </div>

@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { TransitionContext } from "../../context/TransitionContext";
+import { SinTareas } from "./SinTareas";
 import { Tarea } from "./Tarea";
 
 export const ListaTareas = () => {
 
   const { isOn, setIsOn } = useContext(TransitionContext);
-  const tareas = [1, 2, 3]
+  const tareas = []
     
   return (
     <>
@@ -37,10 +38,17 @@ export const ListaTareas = () => {
             </div>
           </div>
           {/* FIn del header lista de tareas */}
+
           <ul>
-            {tareas.map((value) => (
-              <Tarea key={value} />
-            ))}
+            {
+              tareas.length > 1 ? (
+                tareas.map((value) => (
+                <Tarea key={value} />
+              ))
+              ) : (
+                  <SinTareas />
+              )
+            }
           </ul>
         </div>
       </div>
