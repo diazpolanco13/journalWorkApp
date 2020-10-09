@@ -1,54 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Transition } from '@headlessui/react'
+import { ListaTareas } from './ListaTareas';
+
+
 
 export const NuevaTarea = () => {
+
+  const [isOn, setIsOn] = useState(true)
+
     return (
       <>
-        <div className="flex">
-          <div className="absolute inset-0 overflow-hidden">
-            <section>
-              <h1 className="ml-4">Aqui me acueto yo</h1>
-            </section>
-            <section className="absolute inset-y-0 right-0 flex max-w-full pl-16">
-              {/*
-                    Slide-over panel, show/hide based on slide-over state.
-
-                    Entering: "transform transition ease-in-out duration-500 sm:duration-700"
-                    From: "translate-x-full"
-                    To: "translate-x-0"
-                    Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
-                    From: "translate-x-0"
-                    To: "translate-x-full"
-                */}
+        <div className="flex ">
+          <div className="absolute inset-0 w-full overflow-hidden bg-blue-400">
+              <ListaTareas/>
+            <section className="absolute inset-y-0 right-0 max-w-full pl-16 bg-red-300 ">
+              {/*Slide-over panel, show/hide based on slide-over state.*/}
+              <Transition
+                    show={isOn}
+                    appear={true}
+                    enter= "transform transition ease-in-out duration-500 sm:duration-700"
+                    enterFrom= "translate-x-full"
+                    enterTo= "translate-x-0"
+                    leave= "transform transition ease-in-out duration-500 sm:duration-700"
+                    leaveFrom= "translate-x-0"
+                    leaveTo= "translate-x-full"
+              >
+                
               <div className="w-screen max-w-md">
                 <div className="flex flex-col h-full bg-white divide-y divide-gray-200 shadow-xl">
                   <div className="flex-1 h-0 overflow-y-auto">
-                    <header className="px-4 py-6 space-y-1 bg-gray-900 sm:px-6">
-                      <div className="flex items-center justify-between space-x-3">
+                      <header className="px-4 py-6 space-y-1 bg-gray-900 sm:px-6">
+                        <div className="flex items-center justify-between space-x-3">
                         <h2 className="text-lg font-medium leading-7 text-white">
                           Nueva tarea
                         </h2>
-                        <div className="flex items-center h-7">
-                          <button
-                            aria-label="Close panel"
-                            className="text-indigo-200 transition duration-150 ease-in-out hover:text-white"
-                          >
-                            {/* Heroicon name: x */}
-                            <svg
-                              className="w-6 h-6"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
+                          <div className="flex items-center h-7">
+                            <button
+                              onClick={() => setIsOn(!isOn)}
+                              aria-label="Close panel"
+                              className="p-1 text-indigo-200 transition duration-150 ease-in-out bg-gray-900 hover:text-white"
                             >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M6 18L18 6M6 6l12 12"
-                              />
-                            </svg>
-                          </button>
-                        </div>
+                              {/* Heroicon name: x */}
+                              <svg
+                                className="w-6 h-6"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M6 18L18 6M6 6l12 12"
+                                />
+                              </svg>
+                            </button>
+                          </div>  
                       </div>
                       <div>
                         <p className="text-sm leading-5 text-indigo-300">
@@ -90,7 +98,7 @@ export const NuevaTarea = () => {
                             </div>
                           </div>
                           
-                          {/* <div className="space-y-2">
+                          <div className="space-y-2">
                             <h3 className="text-sm font-medium leading-5 text-gray-900">
                               Funcionarios asignados
                             </h3>
@@ -138,67 +146,67 @@ export const NuevaTarea = () => {
                                 </button>
                               </div>
                             </div>
-                          </div> */}
-                          {/* <fieldset className="space-y-2">
-                            <legend className="text-sm font-medium leading-5 text-gray-900">
-                              Privacidad
-                            </legend>
-                            <div className="space-y-5">
-                              <div className="relative flex items-start">
-                                <div className="absolute flex items-center h-5">
-                                  <input
-                                    id="privacy_public"
-                                    aria-describedby="privacy_public_description"
-                                    type="radio"
-                                    name="privacy"
-                                    className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
-                                  />
-                                </div>
-                                <div className="text-sm leading-5 pl-7">
-                                  <label
-                                    htmlFor="privacy_public"
-                                    className="font-medium text-gray-900"
-                                  >
-                                    Privado
-                                  </label>
-                                  <p
-                                    id="privacy_public_description"
-                                    className="text-gray-500"
-                                  >
-                                    Solo usted puede ver la tarea
-                                  </p>
-                                </div>
-                              </div>
-                              <div>
-                                <div className="relative flex items-start">
-                                  <div className="absolute flex items-center h-5">
-                                    <input
-                                      id="privacy_private-to-project"
-                                      aria-describedby="privacy_private-to-project_description"
-                                      type="radio"
-                                      name="privacy"
-                                      className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
-                                    />
+                          </div>
+                                <fieldset className="space-y-2">
+                                  <legend className="text-sm font-medium leading-5 text-gray-900">
+                                    Privacidad
+                                  </legend>
+                                  <div className="space-y-5">
+                                    <div className="relative flex items-start">
+                                      <div className="absolute flex items-center h-5">
+                                        <input
+                                          id="privacy_public"
+                                          aria-describedby="privacy_public_description"
+                                          type="radio"
+                                          name="privacy"
+                                          className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
+                                        />
+                                      </div>
+                                      <div className="text-sm leading-5 pl-7">
+                                        <label
+                                          htmlFor="privacy_public"
+                                          className="font-medium text-gray-900"
+                                        >
+                                          Privado
+                                        </label>
+                                        <p
+                                          id="privacy_public_description"
+                                          className="text-gray-500"
+                                        >
+                                          Solo usted puede ver la tarea
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <div className="relative flex items-start">
+                                        <div className="absolute flex items-center h-5">
+                                          <input
+                                            id="privacy_private-to-project"
+                                            aria-describedby="privacy_private-to-project_description"
+                                            type="radio"
+                                            name="privacy"
+                                            className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
+                                          />
+                                        </div>
+                                        <div className="text-sm leading-5 pl-7">
+                                          <label
+                                            htmlFor="privacy_private-to-project"
+                                            className="font-medium text-gray-900"
+                                          >
+                                            Público
+                                          </label>
+                                          <p
+                                            id="privacy_private-to-project_description"
+                                            className="text-gray-500"
+                                          >
+                                            Los miembros del equipo pueden ver la
+                                            tarea
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div className="text-sm leading-5 pl-7">
-                                    <label
-                                      htmlFor="privacy_private-to-project"
-                                      className="font-medium text-gray-900"
-                                    >
-                                      Público
-                                    </label>
-                                    <p
-                                      id="privacy_private-to-project_description"
-                                      className="text-gray-500"
-                                    >
-                                      Los miembros del equipo pueden ver la
-                                      tarea
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </fieldset> */}
+                                </fieldset>
                                     <div class=" ml-4 mt-6 mb-4 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                     <label
                                         for="cover_photo"
@@ -264,7 +272,8 @@ export const NuevaTarea = () => {
                   </div>
                 </div>
               </div>
-            </section>
+                </Transition>
+              </section>
           </div>
         </div>
       </>
