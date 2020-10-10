@@ -1,8 +1,26 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { login } from "../../actions/auth";
 import logo from "../../assets/img/logo.png";
+import { useForm } from "../../hooks/useForm";
 
 export const LoginScreen = () => {
+  const dispatch = useDispatch();
+
+  const initialForm = {
+    email: "diazpolanco13@gmail.com",
+    password: "123456",
+  };
+  const [formValues, handleInputChange] = useForm(initialForm);
+
+  const { email, password } = formValues;
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(login(123123213, "Carlos"));
+  };
+
   return (
     <>
       <div className="flex flex-col justify-center min-w-full min-h-full py-12 bg-gray-50 sm:px-6 lg:px-8">
@@ -14,7 +32,7 @@ export const LoginScreen = () => {
         </div>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-            <form action="#" method="POST">
+            <form onSubmit={handleLogin}>
               <div>
                 <label
                   htmlFor="email"
@@ -24,9 +42,11 @@ export const LoginScreen = () => {
                 </label>
                 <div className="mt-1 rounded-md shadow-sm">
                   <input
-                    id="email"
+                    name="email"
                     type="email"
                     autoComplete="off"
+                    value={email}
+                    onChange={handleInputChange}
                     required
                     className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
                   />
@@ -42,8 +62,10 @@ export const LoginScreen = () => {
                 </label>
                 <div className="mt-1 rounded-md shadow-sm">
                   <input
-                    id="password"
+                    name="password"
                     type="password"
+                    value={password}
+                    onChange={handleInputChange}
                     required
                     className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
                   />
