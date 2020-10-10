@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { login } from "../../actions/auth";
+import { startGoogleLogin, startLoginEmailPassword } from "../../actions/auth";
 import logo from "../../assets/img/logo.png";
 import { useForm } from "../../hooks/useForm";
 
@@ -18,7 +18,11 @@ export const LoginScreen = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(123123213, "Carlos"));
+    dispatch(startLoginEmailPassword(email, password));
+  };
+
+  const handleGoogleLogin = () => {
+    dispatch(startGoogleLogin());
   };
 
   return (
@@ -122,9 +126,11 @@ export const LoginScreen = () => {
               </div>
 
               <div className="grid grid-cols-3 gap-3 mt-6">
-                <div>
+                {/* <div>
                   <span className="inline-flex w-full rounded-md shadow-sm">
                     <button
+                      disabled
+                      name="facebook"
                       type="button"
                       className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue"
                       aria-label="Sign in with Facebook"
@@ -142,35 +148,18 @@ export const LoginScreen = () => {
                       </svg>
                     </button>
                   </span>
-                </div>
-
-                <div>
+                </div> */}
+                <div className="col-span-3">
                   <span className="inline-flex w-full rounded-md shadow-sm">
                     <button
                       type="button"
-                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue"
-                      aria-label="Sign in with Twitter"
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-                      </svg>
-                    </button>
-                  </span>
-                </div>
-
-                <div>
-                  <span className="inline-flex w-full rounded-md shadow-sm">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue"
+                      name="google"
+                      onClick={handleGoogleLogin}
+                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-white focus:outline-none focus:border-blue-300 focus:shadow-outline-blue "
                       aria-label="Sign in with Google"
                     >
                       <svg
-                        className="w-5 h-5"
+                        className="w-5 h-5 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue "
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -192,6 +181,23 @@ export const LoginScreen = () => {
                     </button>
                   </span>
                 </div>
+                {/* <div>
+                  <span className="inline-flex w-full rounded-md shadow-sm">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue"
+                      aria-label="Sign in with Twitter"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                      </svg>
+                    </button>
+                  </span>
+                </div> */}
               </div>
             </div>
             <div className="mt-4 text-lg font-medium text-blue-900 hover:text-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
