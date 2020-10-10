@@ -4,7 +4,6 @@ import { ListaTareas } from "./ListaTareas";
 import { TransitionContext } from "../../context/TransitionContext";
 
 export const SidebarDeTareas = () => {
-  
   const { isOn, setIsOn } = useContext(TransitionContext);
 
   return (
@@ -12,6 +11,7 @@ export const SidebarDeTareas = () => {
       <div className="flex ">
         <div className="absolute inset-0 flex-1 w-full overflow-hidden ">
           <ListaTareas />
+
           <section className="absolute inset-y-0 right-0 flex-1 max-w-full pl-16 ">
             {/*Slide-over panel, show/hide based on slide-over state.*/}
             <Transition

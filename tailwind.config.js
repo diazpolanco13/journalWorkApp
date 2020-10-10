@@ -16,6 +16,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#232527",
+        sunFlower: "#f1c40f",
         dark: {
           grey: "#363636",
           ligth: "#d8d8d8",
@@ -25,7 +26,13 @@ module.exports = {
   },
   variants: {
     sans: "Helvetica, Arial, sans-serif",
-    backgroundColor: ["responsive", "hover", "focus", "active", "focus-visible"],
+    backgroundColor: [
+      "responsive",
+      "hover",
+      "focus",
+      "active",
+      "focus-visible",
+    ],
     textDecoration: ["responsive", "hover", "focus", "focus-visible"],
   },
   plugins: [

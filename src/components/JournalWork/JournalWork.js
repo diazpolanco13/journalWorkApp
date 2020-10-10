@@ -14,6 +14,7 @@ import { TransitionContext } from "../context/TransitionContext";
 export const JournalWork = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [isOn, setIsOn] = useState(false);
+  const [detallesOn, setDetallesOn] = useState(false);
 
   return (
     <>
@@ -26,6 +27,8 @@ export const JournalWork = () => {
             setShowSidebar,
             isOn,
             setIsOn,
+            detallesOn,
+            setDetallesOn,
           }}
         >
           <SidebarMovil />

@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
 import { SidebarDeTareas } from "./SidebarDeTareas";
-
-
+import { SidebarDetalles } from "./SidebarDetalles";
 
 export const PanelDeTareas = () => {
   return (
@@ -12,9 +11,9 @@ export const PanelDeTareas = () => {
       >
         <div className="pt-2 pb-6 md:py-6">
           <SidebarDeTareas />
+          <SidebarDetalles />
         </div>
       </main>
     </>
   );
 };
- 
