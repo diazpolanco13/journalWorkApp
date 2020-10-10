@@ -6,7 +6,7 @@ import { Tarea } from "./Tarea";
 export const ListaTareas = () => {
 
   const { isOn, setIsOn } = useContext(TransitionContext);
-  const tareas = []
+  const tareas = [1,2]
     
   return (
     <>
@@ -41,7 +41,7 @@ export const ListaTareas = () => {
 
           <ul>
             {
-              tareas.length > 1 ? (
+              tareas.length > 0 ? (
                 tareas.map((value) => (
                 <Tarea key={value} />
               ))

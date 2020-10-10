@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import vigilanciaCasa from "../../../assets/img/vigilanciaCasa.jpg";
+import { TransitionContext } from "../../context/TransitionContext";
+
+
+
 export const Tarea = () => {
+
+  const {isOn, setIsOn} = useContext(TransitionContext)
+
+
   return (
     <>
       <li className="border-t border-gray-200">
-        <a
-          href="/"
+        <button
+          onClick={()=> setIsOn(!isOn)}
           className="block transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
         >
           <div className="flex items-center px-4 py-4 sm:px-6">
@@ -19,10 +27,10 @@ export const Tarea = () => {
               </div>
               <div className="flex-1 min-w-0 px-4 md:grid md:grid-cols-2 md:gap-4">
                 <div className="flex-grow w-full orden-2">
-                  <div className="text-sm font-medium leading-5 text-blue-600 truncate">
+                  <div className="text-sm font-medium leading-5 text-left text-blue-600 truncate">
                     Establecer punto de vigilancia y seguimiento a objetivo
                   </div>
-                  <p className="mt-1 text-sm leading-5 text-gray-500">
+                  <p className="mt-1 text-sm leading-5 text-left text-gray-500">
                     Colocar punto de vigilancia al objetivo Pecas, en su
                     residencia y hacer plan de enfrentamiento.
                   </p>
@@ -86,7 +94,7 @@ export const Tarea = () => {
               </svg>
             </div>
           </div>
-        </a>
+        </button>
       </li>
     </>
   );
