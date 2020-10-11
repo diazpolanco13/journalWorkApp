@@ -27,3 +27,9 @@ La compilación se minimiza y los nombres de archivo incluyen los hash. <br />
 ¡Tu aplicación está lista para implementarse!
 
 
+### `La rama de desarrollo es Develop`
+para cambiarte a esa rama, ejecutar <br /> 
+git checkout Develop
+
+### `Contribuciones`
+Por favor no trabaje en la rama Develop, crene una rama para probar sus contribuciones. 
