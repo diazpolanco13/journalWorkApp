@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { startGoogleLogin, startLoginEmailPassword } from "../../actions/auth";
+// import { startGoogleLogin } from "../../actions/auth";
+import { startLoginEmailPassword } from "../../actions/auth";
 import logo from "../../assets/img/logo.png";
 import { useForm } from "../../hooks/useForm";
 
@@ -22,9 +23,9 @@ export const LoginScreen = () => {
     dispatch(startLoginEmailPassword(email, password));
   };
 
-  const handleGoogleLogin = () => {
-    dispatch(startGoogleLogin());
-  };
+  // const handleGoogleLogin = () => {
+  //   dispatch(startGoogleLogin());
+  // };
 
   return (
     <>
@@ -119,6 +120,10 @@ export const LoginScreen = () => {
               </div>
             </form>
 
+{/*
+// INICIO DE SESION CON GOOGLE
+
+
             <div className="mt-6">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
@@ -132,7 +137,7 @@ export const LoginScreen = () => {
               </div>
 
               <div className="grid grid-cols-3 gap-3 mt-6">
-                {/* <div>
+                 <div>
                   <span className="inline-flex w-full rounded-md shadow-sm">
                     <button
                       disabled
@@ -154,7 +159,7 @@ export const LoginScreen = () => {
                       </svg>
                     </button>
                   </span>
-                </div> */}
+                </div> 
                 <div className="col-span-3">
                   <span className="inline-flex w-full rounded-md shadow-sm">
                     <button
@@ -203,9 +208,11 @@ export const LoginScreen = () => {
                       </svg>
                     </button>
                   </span>
-                </div> */}
+                </div> 
               </div>
             </div>
+FIN DE INICIO SE SESION CON GOOGLE    
+            */}
             <div className="mt-4 text-lg font-medium text-blue-900 hover:text-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
               <Link to="/auth/register">Crea una nueva cuenta</Link>
             </div>

@@ -13,10 +13,10 @@ export const RegisterScreen = () => {
   const { msgError } = useSelector((state) => state).ui;
 
   const initialForm = {
-    name: "Francisco Mavarez",
-    email: "josechavez_jose@yahoo.com",
-    password: "123456",
-    password2: "123456",
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
   };
 
   const [formValues, handleInputChange] = useForm(initialForm);
@@ -146,7 +146,7 @@ export const RegisterScreen = () => {
                 </span>
               </div>
             </form>
-
+{/*
             <div className="mt-6">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
@@ -160,7 +160,7 @@ export const RegisterScreen = () => {
               </div>
 
               <div className="grid grid-cols-3 gap-3 mt-6">
-                {/*<div>
+                <div>
                   <span className="inline-flex w-full rounded-md shadow-sm">
                     <button
                       type="button"
@@ -180,9 +180,9 @@ export const RegisterScreen = () => {
                       </svg>
                     </button>
                   </span>
-                </div> */}
+                </div> 
 
-                {/* <div>
+                 <div>
                   <span className="inline-flex w-full rounded-md shadow-sm">
                     <button
                       type="button"
@@ -198,7 +198,7 @@ export const RegisterScreen = () => {
                       </svg>
                     </button>
                   </span>
-                </div> */}
+                </div> 
 
                 <div className="col-span-3">
                   <span className="inline-flex w-full rounded-md shadow-sm">
@@ -232,6 +232,7 @@ export const RegisterScreen = () => {
                 </div>
               </div>
             </div>
+            */}
             <div className="mt-4 text-lg font-medium text-blue-900 hover:text-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
               <Link to="/auth/login">Inicia sesión</Link>
             </div>
