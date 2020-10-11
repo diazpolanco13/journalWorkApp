@@ -6,11 +6,12 @@ import { Error } from "./Error";
 import { useDispatch, useSelector } from "react-redux";
 import validator from "validator";
 import { removeError, setError } from "../../actions/ui";
+import { startRegisterWhithPasswordName } from "../../actions/auth";
 
 export const RegisterScreen = () => {
   const dispatch = useDispatch();
   const { msgError } = useSelector((state) => state).ui;
-  console.log(msgError);
+
   const initialForm = {
     name: "Francisco Mavarez",
     email: "josechavez_jose@yahoo.com",
@@ -25,7 +26,7 @@ export const RegisterScreen = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     if (isFormValid()) {
-      console.log("formulario correcto");
+      dispatch(startRegisterWhithPasswordName(email, password, name));
     }
   };
 
@@ -57,7 +58,7 @@ export const RegisterScreen = () => {
             Registrate con tus datos
           </h2>
         </div>
-        {msgError && <Error error={msgError} />}
+        {msgError && <Error />}
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">

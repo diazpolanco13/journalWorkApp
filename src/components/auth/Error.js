@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-export const Error = ({ error }) => {
+export const Error = () => {
+  const { msgError } = useSelector((state) => state).ui;
+
   return (
     <>
       <div className="p-4 mt-2 text-left rounded-md bg-red-50">
@@ -22,7 +25,7 @@ export const Error = ({ error }) => {
           </div>
           <div className="ml-3">
             <h3 className="text-sm font-medium leading-5 text-red-800">
-              {error}
+              {msgError}
             </h3>
           </div>
         </div>

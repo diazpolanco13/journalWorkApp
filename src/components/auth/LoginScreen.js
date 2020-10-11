@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { startGoogleLogin, startLoginEmailPassword } from "../../actions/auth";
 import logo from "../../assets/img/logo.png";
@@ -7,6 +7,7 @@ import { useForm } from "../../hooks/useForm";
 
 export const LoginScreen = () => {
   const dispatch = useDispatch();
+  const {loading} = useSelector(state => state.ui)
 
   const initialForm = {
     email: "diazpolanco13@gmail.com",
@@ -105,7 +106,12 @@ export const LoginScreen = () => {
                 <span className="block w-full rounded-md shadow-sm">
                   <button
                     type="submit"
-                    className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-blue-800 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                    disabled={loading}
+                    className={
+                      loading
+                        ? `cursor-not-allowed flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-blue-400 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700`
+                        : `"flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out bg-blue-800 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700"`
+                    }
                   >
                     Incio de sesión
                   </button>
