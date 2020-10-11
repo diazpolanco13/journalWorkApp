@@ -1,28 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {firebase} from '../firebase/firebase-config'
 import {
   BrowserRouter as Router,
   Redirect,
   Switch,
-  Route,
 } from "react-router-dom";
 import { AuthRouter } from "./AuthRouter";
 import { JournalWork } from "../components/JournalWork/JournalWork";
+import { useDispatch } from "react-redux";
+import { login } from "../actions/auth";
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
+
+
+
 
 export const AppRouter = () => {
-  return (
-    <Router>
-      <div>
-        <Switch>
-          <Route path="/auth" component={AuthRouter} />
-          <Route path="/equipo" component={JournalWork} />
-          <Route path="/vehiculos" component={JournalWork} />
-          <Route path="/reportes" component={JournalWork} />
-          <Route path="/tareas" component={JournalWork} />
-          <Route path="/historial" component={JournalWork} />
-          <Route exact path="/" component={JournalWork} />
-          <Redirect to="/auth/login" />
-        </Switch>
-      </div>
-    </Router>
-  );
+  const dispatch = useDispatch()
+
+  const [cheking, setCheking] = useState(true)
+  const [isLogin, setIsLogin] = useState(false)
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user?.uid) {
+        dispatch(login(user.uid, user.displayName));
+        setIsLogin(true)
+      } else {
+        setIsLogin(false)
+      }
+      setCheking(false);
+    });
+  }, [dispatch, setCheking, setIsLogin]);
+
+  if (cheking) {
+    return (
+      <h1> Espere...</h1>
+    )
+  }
+    return (
+      <Router>
+        <div>
+          <Switch>
+            <PublicRoute
+              isAutenticated={isLogin}
+              path="/auth"
+              component={AuthRouter} />
+
+            <PrivateRoute isAutenticated={isLogin} path="/equipo" component={JournalWork} />
+            <PrivateRoute isAutenticated={isLogin} path="/vehiculos" component={JournalWork} />
+            <PrivateRoute isAutenticated={isLogin} path="/reportes" component={JournalWork} />
+            <PrivateRoute isAutenticated={isLogin} path="/tareas" component={JournalWork} />
+            <PrivateRoute isAutenticated={isLogin} path="/historial" component={JournalWork} />
+            <PrivateRoute
+              exact
+              isAutenticated={isLogin}
+              path="/"
+              component={JournalWork}
+            />
+
+            <Redirect to="/auth/login" />
+          </Switch>
+        </div>
+      </Router>
+    );
 };

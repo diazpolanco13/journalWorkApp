@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import { Transition } from "@headlessui/react";
+import { useDispatch } from 'react-redux';
+import { startLogout } from '../../actions/auth';
 
 
 
 export const ProfileDropdown = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    dispatch(startLogout())
+
+  }
 
     return (
       <>
@@ -60,13 +68,13 @@ export const ProfileDropdown = () => {
                   Configuracion
                 </a>
 
-                <a
-                  href="/"
-                  className="block px-4 py-2 text-sm text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100"
+                <button
+                  onClick={handleLogout}
+                  className="w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out border-none hover:bg-gray-100"
                   role="menuitem"
                 >
                   Salir
-                </a>
+                </button>
               </div>
             </div>
           </Transition>
