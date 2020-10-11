@@ -33,3 +33,11 @@ para cambiarte a esa rama, ejecutar <br />
 
 ### `Contribuciones`
 Por favor no trabaje en la rama Develop, crene una rama para probar sus contribuciones. 
+
+## `Configuracion para ejecutar el proyecto`
+1- Instale Node y NPM en su equipo.
+2- Clone el proyecto y navegue a la carpeta. 
+3- Actualice las dependencias,paquetes y liberias con el comando
+```npm install```
+4- Corra el proyecto.
+```npm run start```
