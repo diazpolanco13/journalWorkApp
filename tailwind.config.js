@@ -15,7 +15,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#5c62c5",
+        primary: "#232527",
+        sunFlower: "#f1c40f",
         dark: {
           grey: "#363636",
           ligth: "#d8d8d8",
@@ -25,7 +26,18 @@ module.exports = {
   },
   variants: {
     sans: "Helvetica, Arial, sans-serif",
+    backgroundColor: [
+      "responsive",
+      "hover",
+      "focus",
+      "active",
+      "focus-visible",
+    ],
     textDecoration: ["responsive", "hover", "focus", "focus-visible"],
   },
-  plugins: []
+  plugins: [
+    require("@tailwindcss/ui")({
+      layout: "sidebar",
+    }),
+  ],
 };
