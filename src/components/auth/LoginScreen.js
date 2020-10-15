@@ -120,7 +120,7 @@ export const LoginScreen = () => {
               </div>
             </form>
 
-            <div className="mt-4 text-lg font-medium text-blue-900 hover:text-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
+            <div className="inline-flex justify-center w-full px-4 py-2 mt-3 text-lg font-bold leading-5 text-gray-500 transition duration-150 ease-in-out bg-white rounded-md hover:text-blue-800 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue">
               <Link to="/auth/register">Crea una nueva cuenta</Link>
             </div>
           </div>
