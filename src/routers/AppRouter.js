@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../actions/auth";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
+import { LoadingDinamic } from "../components/JournalWork/LoadingDinamic";
 
 
 
@@ -35,7 +36,7 @@ export const AppRouter = () => {
 
   if (cheking) {
     return (
-      <h1> Espere...</h1>
+      <LoadingDinamic />
     )
   }
     return (

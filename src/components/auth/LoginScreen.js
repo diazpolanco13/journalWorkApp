@@ -12,8 +12,8 @@ export const LoginScreen = () => {
   const {loading} = useSelector(state => state.ui)
 
   const initialForm = {
-    email: "",
-    password: "",
+    email: "diazpolanco13@outlook.com",
+    password: "123456",
   };
   const [formValues, handleInputChange] = useForm(initialForm);
 
@@ -34,7 +34,6 @@ export const LoginScreen = () => {
         loading ? (
           <Loading />
 
-         
         ) : (
           <div className="flex flex-col justify-center min-w-full min-h-full py-12 bg-gray-50 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
