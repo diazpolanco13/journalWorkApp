@@ -46,7 +46,7 @@ export const ProfileDropdown = () => {
                   >
                   
                   <Menu.Items
-                    className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                    className="absolute right-0 w-40 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                   >
                     <div
                       className="py-1 bg-white rounded-md shadow-xs"
