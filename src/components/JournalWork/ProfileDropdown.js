@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu, Transition } from "@headlessui/react";
 import { useDispatch } from 'react-redux';
-import { startLogout } from '../../actions/auth';
+import { startLogout } from '../../actions/authActions';
 
 
 

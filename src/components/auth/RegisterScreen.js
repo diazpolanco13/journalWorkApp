@@ -5,8 +5,8 @@ import { useForm } from "../../hooks/useForm";
 import { Error } from "./Error";
 import { useDispatch, useSelector } from "react-redux";
 import validator from "validator";
-import { removeError, setError } from "../../actions/ui";
-import { startRegisterWhithPasswordName } from "../../actions/auth";
+import { removeError, setError } from "../../actions/uiActions";
+import { startRegisterWhithPasswordName } from "../../actions/authActions";
 
 export const RegisterScreen = () => {
   const dispatch = useDispatch();
@@ -31,19 +31,27 @@ export const RegisterScreen = () => {
   };
 
   const isFormValid = () => {
-    if (name.trim().length === 0) {
-      dispatch(setError("Nombre es requerido"));
+    if (validator.isEmpty(name)) {
+      dispatch(setError("Nombre esta vacio"));
       return false;
+
     } else if (!validator.isEmail(email)) {
       dispatch(setError("Esto no es un Email"));
       return false;
-    } else if (password !== password2) {
+
+    } else if (!validator.equals(password, password2)) {
       dispatch(setError("Las contraseñas no son iguales"));
       return false;
+
     } else if (password.length < 5) {
       dispatch(setError("La contraseña es menor a 6 caracteres"));
       return false;
+
+    } else if (validator.isAlphanumeric((password, 'es-Es'))) {
+      dispatch(setError("Las contraseñas no es alfanumerica"))
+      return false;
     }
+
     dispatch(removeError());
     return true;
   };
