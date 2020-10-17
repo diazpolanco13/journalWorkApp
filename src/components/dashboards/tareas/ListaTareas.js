@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 import { TransitionContext } from "../../context/TransitionContext";
 import { SinTareas } from "./SinTareas";
 import { Tarea } from "./Tarea";
@@ -6,7 +7,11 @@ import { Tarea } from "./Tarea";
 export const ListaTareas = () => {
 
   const { isOn, setIsOn } = useContext(TransitionContext);
-  const tareas = [1,2]
+  
+  const { initialState } = useSelector((state) => state).notes;
+
+ 
+  const tareas = [1, 2]
     
   return (
     <>
@@ -41,7 +46,8 @@ export const ListaTareas = () => {
 
           <ul>
             {
-              tareas.length > 0 ? (
+              (initialState.active)
+                ? (
                 tareas.map((value) => (
                 <Tarea key={value} />
               ))

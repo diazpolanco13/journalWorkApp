@@ -2,9 +2,20 @@ import React, { useContext } from "react";
 import { Transition } from "@headlessui/react";
 import { ListaTareas } from "./ListaTareas";
 import { TransitionContext } from "../../context/TransitionContext";
+import { startNewNotes } from "../../../actions/notesAction";
+import { useDispatch } from "react-redux";
+
+
 
 export const SidebarDeTareas = () => {
   const { isOn, setIsOn } = useContext(TransitionContext);
+  const dispatch = useDispatch();
+
+  const handleAddNew = () => {
+    dispatch(startNewNotes())
+    
+  }
+
 
   return (
     <>
@@ -158,7 +169,7 @@ export const SidebarDeTareas = () => {
                                     id="privacy_public"
                                     aria-describedby="privacy_public_description"
                                     type="radio"
-                                    name="privacy"
+                                    name="incomlete"
                                     className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
                                   />
                                 </div>
@@ -184,7 +195,7 @@ export const SidebarDeTareas = () => {
                                       id="privacy_private-to-project"
                                       aria-describedby="privacy_private-to-project_description"
                                       type="radio"
-                                      name="privacy"
+                                      name="complete"
                                       className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
                                     />
                                   </div>
@@ -262,6 +273,7 @@ export const SidebarDeTareas = () => {
                     <span className="inline-flex rounded-md shadow-sm">
                       <button
                         type="submit"
+                        onClick={handleAddNew}
                         className="inline-flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-gray-600 border border-transparent rounded-md hover:bg-gray-500 focus:outline-none focus:border-gay-700 focus:shadow-outline-indigo active:bg-gray-700"
                       >
                         Guardar
