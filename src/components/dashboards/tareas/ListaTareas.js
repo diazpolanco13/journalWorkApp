@@ -8,9 +8,9 @@ export const ListaTareas = () => {
 
   const { isOn, setIsOn } = useContext(TransitionContext);
   
-  const { initialState } = useSelector((state) => state).notes;
+  const { active } = useSelector((state) => state).notes;
 
- 
+ console.log(active)
   const tareas = [1, 2]
     
   return (
@@ -46,7 +46,7 @@ export const ListaTareas = () => {
 
           <ul>
             {
-              (initialState.active)
+              (tareas.length > 0)
                 ? (
                 tareas.map((value) => (
                 <Tarea key={value} />

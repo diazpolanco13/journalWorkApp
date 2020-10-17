@@ -1,6 +1,7 @@
+import { types } from "../types/types"
 /* 
     {
-    tareas: [],
+    notes: [],
     active: null,
     active: {
         id: 'lasnldadlnnadsladsdansl',
@@ -15,14 +16,21 @@
 
 */
 
+
 const initialState = {
     notes: [],
-    active: true,
+    active: null,
     }
 
-export const notesReducer = (state = {initialState}, action) => {
+export const notesReducer = (state = initialState, action) => {
     switch (action.type) {
-    
+        case types.notesActive: 
+            return {
+                ...state,
+                active: {
+                    ...action.payload
+                }
+            }
         
         default:
             return state

@@ -12,6 +12,7 @@ export const SidebarDeTareas = () => {
   const dispatch = useDispatch();
 
   const handleAddNew = () => {
+    
     dispatch(startNewNotes())
     
   }

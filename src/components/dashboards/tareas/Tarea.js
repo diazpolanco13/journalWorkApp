@@ -3,7 +3,7 @@ import vigilanciaCasa from "../../../assets/img/vigilanciaCasa.jpg";
 import { TransitionContext } from "../../context/TransitionContext";
 
 export const Tarea = () => {
-  // const { isOn, setIsOn } = useContext(TransitionContext);
+
   const { detallesOn, setDetallesOn } = useContext(TransitionContext);
 
   return (
