@@ -2,25 +2,30 @@ import React, { useContext } from "react";
 import moment from "moment";
 import notImage from "../../../assets/img/sin_imagen.png";
 import { TransitionContext } from "../../context/TransitionContext";
+import { useDispatch } from "react-redux";
+import { activeNote } from "../../../actions/notesAction";
 
-export const Tarea = ({
-  id,
-  date,
-  description,
-  imageUrl,
-  complete,
-  incomplete,
-  title,
-}) => {
+
+export const Tarea = ({ id, date, description, imageUrl, complete, incomplete, title }) => {
+  const { setDetallesOn } = useContext(TransitionContext);
+  
   const noteDate = moment(date);
-  const { detallesOn, setDetallesOn } = useContext(TransitionContext);
-  // console.log(id, date, description, imageUrl, complete, incomplete, title)
+  const dispatch = useDispatch();
 
+  const handleEntryClick = () => {
+    setDetallesOn(true)
+    dispatch( 
+        activeNote( id, {
+            date, title, description, imageUrl, complete
+        })
+    );
+}
+  
   return (
     <>
       <li className="border-t border-gray-200">
         <button
-          onClick={() => setDetallesOn(!detallesOn)}
+          onClick={handleEntryClick}
           className="block transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
         >
           <div className="flex items-center px-4 py-4 sm:px-6">

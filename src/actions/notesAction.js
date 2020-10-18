@@ -6,8 +6,8 @@ import { finishLoading, startLoading } from "./uiActions";
 
 
 export const startNewNotes = () => {
-
     return async (dispatch, getState) => {
+
         const { uid } = getState().auth;
         
         const newNotes = {
@@ -21,19 +21,17 @@ export const startNewNotes = () => {
 
         const doc = await db.collection(`${uid}/journal/notes`).add(newNotes)
 
-        dispatch(activeNote(doc.id, newNotes))
+        dispatch(activeNote(doc.id, newNotes));
     }
 }
 
-export const activeNote = (id, note) => (
-    {
-        type: types.notesActive, 
-            payload: {
-                id, 
-                ...note
-            }
+export const activeNote = ( id, note ) => ({
+    type: types.notesActive,
+    payload: {
+        id,
+        ...note
     }
-)
+});
 
 /* Esto devuelve un objeto con lo siguiente,
  y lo guarda en firebase
@@ -51,20 +49,18 @@ export const activeNote = (id, note) => (
 
 */
 
-export const startLoadingNotes =  (uid) => {
+export const startLoadingNotes = (uid) => {
     return async (dispatch) => {
         dispatch(startLoading());
-      
 
-        const notes = await loadNotes(uid)
-        dispatch(setNotes( notes ))
+        const notes = await loadNotes(uid);
+        dispatch(setNotes(notes));
         
         dispatch(finishLoading());
-     
     }
-}
+};
 
-export const setNotes = ( notes ) => ({ 
+export const setNotes = (notes) => ({
     type: types.notesLoad,
-        payload: notes
- })
+    payload: notes
+});

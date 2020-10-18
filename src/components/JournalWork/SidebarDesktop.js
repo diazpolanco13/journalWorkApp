@@ -12,8 +12,8 @@ export const SidebarDesktop = () => {
             {/* Sidebar component, swap this element with another sidebar if you like */}
             <div className="flex flex-col flex-1 h-0">
               <div className="flex items-center flex-shrink-0 h-16 px-4 bg-gray-900">
-                <img className="w-auto h-8" src={logo} alt="SEBIN" />
-                <h1 className="ml-3 font-extrabold text-white">SEBIN</h1>
+                <img className="w-auto h-8" src={logo} alt="POLICE" />
+                <h1 className="ml-3 font-extrabold text-white">POLICE</h1>
               </div>
               <div className="flex flex-col flex-1 overflow-y-auto">
                 <nav className="flex-1 px-2 py-4 space-y-1 bg-gray-800">

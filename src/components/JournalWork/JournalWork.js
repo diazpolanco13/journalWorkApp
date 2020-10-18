@@ -31,9 +31,10 @@ export const JournalWork = () => {
             setDetallesOn,
           }}
         >
+          {/*  El componente <SidebarMovil/> se ocultara cuando la pantalla sea menor  a  768px (hidden md:flex)*/}
           <SidebarMovil />
 
-          {/*  El componente <SidebarDesktop/> se ocultara cuando la pantalla sea menor  a  768px (hidden md:flex)*/}
+          {/*  El componente <SidebarDesktop/> se mostrara cuando la pantalla sea mayor  a  768px (hidden md:flex)*/}
           <SidebarDesktop />
 
           <div className="flex flex-col flex-1 w-0 overflow-hidden">

@@ -15,7 +15,7 @@ export const ListaTareas = () => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex mx-auto">
         <div className="w-4/5 m-5 overflow-hidden bg-white shadow ml-7-4 sm:rounded-md">
           {/* Header lista de tareas */}
           <div className="px-4 py-5 bg-white border-b border-gray-200 sm:px-6">
@@ -58,8 +58,8 @@ export const ListaTareas = () => {
                     <Tarea
                       key={note.id}
                       {...note}
-                    />)
-                )
+                    />
+                  ))
             }
             
           </ul>
