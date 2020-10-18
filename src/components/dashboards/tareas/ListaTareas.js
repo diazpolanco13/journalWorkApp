@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { TransitionContext } from "../../context/TransitionContext";
-import { SinTareas } from "./SinTareas";
+import {SinTareas} from '../tareas/SinTareas'
+import { LoadingTareas } from "./LoadingTareas";
 import { Tarea } from "./Tarea";
 
 export const ListaTareas = () => {
 
   const { isOn, setIsOn } = useContext(TransitionContext);
   
-  const { active } = useSelector((state) => state).notes;
+  const { notes } = useSelector((state) => state.notes);
+  
+  const { loading } = useSelector((state) => state.ui);
 
- console.log(active)
-  const tareas = [1, 2]
-    
   return (
     <>
       <div className="flex">
@@ -43,18 +43,25 @@ export const ListaTareas = () => {
             </div>
           </div>
           {/* FIn del header lista de tareas */}
-
           <ul>
+
             {
-              (tareas.length > 0)
-                ? (
-                tareas.map((value) => (
-                <Tarea key={value} />
-              ))
-              ) : (
-                  <SinTareas />
-              )
+              loading && <LoadingTareas />
             }
+
+            {
+              !loading && notes.length === 0 ? (
+              <SinTareas />
+            ) : (
+              (!loading && notes.length > 0) &&
+                  notes.map((note) =>                   
+                    <Tarea
+                      key={note.id}
+                      {...note}
+                    />)
+                )
+            }
+            
           </ul>
         </div>
       </div>

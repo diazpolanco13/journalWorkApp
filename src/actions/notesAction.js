@@ -1,5 +1,7 @@
 import { db } from "../firebase/firebase-config";
+import { loadNotes } from "../helpers/loadNotes";
 import { types } from "../types/types";
+import { finishLoading, startLoading } from "./uiActions";
 
 
 
@@ -34,7 +36,7 @@ export const activeNote = (id, note) => (
 )
 
 /* Esto devuelve un objeto con lo siguiente,
- y lo envia al reducer para cambair el estado inicial
+ y lo guarda en firebase
     {
             uid: 94324983sdfsdfu2dfdsff24u9
             title: '',
@@ -48,3 +50,21 @@ export const activeNote = (id, note) => (
 
 
 */
+
+export const startLoadingNotes =  (uid) => {
+    return async (dispatch) => {
+        dispatch(startLoading());
+      
+
+        const notes = await loadNotes(uid)
+        dispatch(setNotes( notes ))
+        
+        dispatch(finishLoading());
+     
+    }
+}
+
+export const setNotes = ( notes ) => ({ 
+    type: types.notesLoad,
+        payload: notes
+ })

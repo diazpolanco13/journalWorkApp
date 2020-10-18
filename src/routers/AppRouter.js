@@ -12,6 +12,7 @@ import { login } from "../actions/authActions";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 import { LoadingDinamic } from "../components/JournalWork/LoadingDinamic";
+import {  startLoadingNotes } from "../actions/notesAction";
 
 
 
@@ -23,10 +24,14 @@ export const AppRouter = () => {
   const [isLogin, setIsLogin] = useState(false)
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged( (user) => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName, user.email));
         setIsLogin(true)
+        
+        //envio al reducer de la funcion que carga las notas
+        dispatch(startLoadingNotes( user.uid ))
+        
       } else {
         setIsLogin(false)
       }

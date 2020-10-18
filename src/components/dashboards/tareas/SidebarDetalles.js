@@ -1,7 +1,7 @@
 import { Transition } from "@headlessui/react";
 import React, { useContext } from "react";
 import { TransitionContext } from "../../context/TransitionContext";
-import vigilanciaCasa from "../../../assets/img/vigilanciaCasa.jpg";
+import notImage from "../../../assets/img/sin_imagen.png";
 
 export const SidebarDetalles = () => {
   const { detallesOn, setDetallesOn } = useContext(TransitionContext);
@@ -57,7 +57,7 @@ export const SidebarDetalles = () => {
                     <div className="relative h-40 sm:h-56">
                       <img
                         className="absolute object-cover w-full h-full"
-                        src={vigilanciaCasa}
+                        src={notImage}
                         alt=""
                       />
                     </div>
