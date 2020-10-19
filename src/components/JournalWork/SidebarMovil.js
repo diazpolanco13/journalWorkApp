@@ -60,7 +60,7 @@ export const SidebarMovil = () => {
                 </div>
                 <div className="flex items-center flex-shrink-0 px-4">
                   <img className="w-auto h-8" src={logo} alt="SEBIN" />
-                  <h1 className="ml-3 font-extrabold text-white">POLICE</h1>
+                  <h1 className="ml-3 font-extrabold text-white">SEBIN</h1>
                 </div>
                 <div className="flex-1 h-0 mt-5 overflow-y-auto">
                   <nav className="px-2 space-y-1">

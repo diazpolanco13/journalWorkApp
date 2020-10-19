@@ -2,10 +2,20 @@ import { Transition } from "@headlessui/react";
 import React, { useContext } from "react";
 import { TransitionContext } from "../../context/TransitionContext";
 import notImage from "../../../assets/img/sin_imagen.png";
+import { useSelector } from "react-redux";
+import moment from "moment";
+import 'moment/locale/es';
 
 export const SidebarDetalles = () => {
-  const { detallesOn, setDetallesOn } = useContext(TransitionContext);
-
+    const { detallesOn, setDetallesOn } = useContext(TransitionContext);
+    
+    const { active } = useSelector(state => state.notes)
+    const { date, description, imageUrl, complete, title  } = active || {}
+    
+    const noteDate = moment(date);
+ 
+  
+  
   return (
     <div>
       <section className="absolute inset-y-0 right-0 flex max-w-full pl-0 sm:pl-0">
@@ -55,19 +65,26 @@ export const SidebarDetalles = () => {
                 <div className="pb-1 sm:pb-6">
                   <div className="space-y-6">
                     <div className="relative h-40 sm:h-56">
-                      <img
+                      {
+                        imageUrl
+                        ? <img
+                        className="absolute object-cover w-full h-full"
+                        src={imageUrl}
+                        alt=""
+                          /> :
+                          <img
                         className="absolute object-cover w-full h-full"
                         src={notImage}
                         alt=""
                       />
+                      }
                     </div>
                     <div className="px-4 space-y-6 sm:-mt-8 sm:flex sm:items-end sm:px-6 sm:space-x-6">
                       <div className="space-y-5 sm:flex-1">
                         <div>
                           <div className="flex items-center space-x-2.5">
                             <h4 className="text-lg font-bold leading-7 text-gray-900 sm:text-lg sm:leading-8">
-                              Establecer punto de vigilancia y seguimiento a
-                              objetivo
+                              {title}
                             </h4>
                           </div>
                         </div>
@@ -101,11 +118,7 @@ export const SidebarDetalles = () => {
                       </dt>
                       <dd className="text-sm leading-5 text-gray-900 sm:col-span-2">
                         <p>
-                          Colocar punto de vigilancia en la residencia del
-                          objetivo pecas, ubicada en Maracaibo, llevar bastante
-                          agua y dinero para los refrigerios, tomar en cuenta
-                          que los maracuchos son gente buena, probalmente la
-                          mejor del universo.
+                        {description}
                         </p>
                       </dd>
                     </div>
@@ -114,20 +127,30 @@ export const SidebarDetalles = () => {
                         Fecha:
                       </dt>
                       <dd className="text-sm leading-5 text-gray-900 sm:col-span-2">
-                        10 Octubre, 2020
+                        { 
+                          noteDate.format("LLL")
+                        }
                       </dd>
                     </div>
                     <div className="space-y-1">
                       <dt className="text-sm font-medium leading-5 text-gray-500 sm:w-40 sm:flex-shrink-0">
                         Estatus:
                       </dt>
-                      <dd className="text-sm leading-5 text-gray-900 sm:col-span-2">
-                        Completada
+                      {
+                        complete
+                        ? <dd className="text-sm leading-5 text-green-600 sm:col-span-2">
+                            Completada
                       </dd>
+                          : <dd className="text-sm leading-5 text-red-600 sm:col-span-2">
+                          No Completada
+                    </dd>
+
+                      }
+                      
                     </div>
                     <div className="space-y-1">
                       <dt className="mb-2 text-sm font-medium leading-5 text-gray-500 sm:w-40 sm:flex-shrink-0">
-                        Funcionarios asignados:
+                        Asignado:
                       </dt>
                       <div className="flex flex-row">
                         <a
@@ -152,28 +175,7 @@ export const SidebarDetalles = () => {
                             </div>
                           </div>
                         </a>
-                        <a
-                          href="/"
-                          className="flex-shrink-0 block ml-3 group focus:outline-none"
-                        >
-                          <div className="flex items-center">
-                            <div>
-                              <img
-                                className="inline-block rounded-full h-9 w-9"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
-                              />
-                            </div>
-                            <div className="ml-3">
-                              <p className="text-sm font-medium leading-5 text-gray-700 group-hover:text-gray-900">
-                                Joan Vasquez
-                              </p>
-                              <p className="text-xs font-medium leading-4 text-gray-500 transition duration-150 ease-in-out group-hover:text-gray-700 group-focus:underline">
-                                Ver perfil
-                              </p>
-                            </div>
-                          </div>
-                        </a>
+                        
                       </div>
                     </div>
                   </dl>
