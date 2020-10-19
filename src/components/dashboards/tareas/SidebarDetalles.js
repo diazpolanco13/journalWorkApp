@@ -5,17 +5,40 @@ import notImage from "../../../assets/img/sin_imagen.png";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import 'moment/locale/es';
+import { useForm } from "../../../hooks/useForm";
+import { useEffect } from "react";
+import { useRef } from "react";
+
 
 export const SidebarDetalles = () => {
     const { detallesOn, setDetallesOn } = useContext(TransitionContext);
+    const { setIsOn } = useContext(TransitionContext);
+    const { active: note } = useSelector(state => state.notes)
     
-    const { active } = useSelector(state => state.notes)
-    const { date, description, imageUrl, complete, title  } = active || {}
+    
+    const { id } = note || {}
+    const [formValues, handleInputChange, reset] = useForm(note);
+    
+    const {date, description, imageUrl, complete, title } = formValues || {};
     
     const noteDate = moment(date);
- 
-  
-  
+
+    const activeId = useRef(id)
+    
+    useEffect(() => {
+      if (id !== activeId.current) {
+        reset(note)
+        activeId.current = id
+      }
+      
+    }, [id, reset, note])
+
+    const handleEdition = () => {
+      setIsOn(true)
+      setDetallesOn(false)
+
+    }
+    
   return (
     <div>
       <section className="absolute inset-y-0 right-0 flex max-w-full pl-0 sm:pl-0">
@@ -91,6 +114,7 @@ export const SidebarDetalles = () => {
                         <div className="flex flex-wrap">
                           <span className="inline-flex flex-shrink-0 w-full rounded-md shadow-sm sm:flex-1">
                             <button
+                              onClick={handleEdition}
                               type="button"
                               className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-gray-600 border border-transparent rounded-md hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-indigo active:bg-gray-700"
                             >

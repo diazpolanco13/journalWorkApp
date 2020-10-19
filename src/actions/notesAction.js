@@ -67,3 +67,33 @@ export const setNotes = (notes) => ({
     type: types.notesLoad,
     payload: notes
 });
+
+export const startSaveNotes = (note) => {
+    return async( dispatch, getState ) => {
+
+        try {
+            const { uid } = getState().auth;
+    
+            const noteToFirestore = { ...note };
+            delete noteToFirestore.id;
+
+            await db.doc(`${ uid }/journal/notes/${ note.id }`).update( noteToFirestore );
+            // dispatch( refreshNote( note.id, noteToFirestore ) );
+            
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}
+
+export const refreshNote = ( id, note ) => ({
+    type: types.notesUpdated,
+    payload: {
+        id,
+        note: {
+            id,
+            ...note
+        }
+    }
+});

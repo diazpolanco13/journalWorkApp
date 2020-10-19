@@ -8,6 +8,7 @@ import { activeNote } from "../../../actions/notesAction";
 
 export const Tarea = ({ id, date, description, imageUrl, complete, incomplete, title }) => {
   const { setDetallesOn } = useContext(TransitionContext);
+
   
   const noteDate = moment(date);
   const dispatch = useDispatch();
@@ -24,9 +25,9 @@ export const Tarea = ({ id, date, description, imageUrl, complete, incomplete, t
   return (
     <>
       <li className="border-t border-gray-200">
-        <button
+        <div
           onClick={handleEntryClick}
-          className="block transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
+          className="block transition duration-150 ease-in-out cursor-pointer hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
         >
           <div className="flex items-center px-4 py-4 sm:px-6">
             <div className="flex items-center flex-1 min-w-0">
@@ -122,7 +123,7 @@ export const Tarea = ({ id, date, description, imageUrl, complete, incomplete, t
               </svg>
             </div>
           </div>
-        </button>
+        </div>
       </li>
     </>
   );
