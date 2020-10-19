@@ -1,5 +1,7 @@
 import { types } from "../types/types"
 /* 
+    El objeto que se piensa majear en este reducer 
+    tiene estas caracteristicas
     {
     notes: [],
     active: null,

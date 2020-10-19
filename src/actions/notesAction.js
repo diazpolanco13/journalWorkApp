@@ -7,7 +7,8 @@ import { finishLoading, startLoading } from "./uiActions";
 
 export const startNewNotes = () => {
     return async (dispatch, getState) => {
-
+        dispatch(startLoading());
+        
         const { uid } = getState().auth;
         
         const newNotes = {
@@ -18,10 +19,12 @@ export const startNewNotes = () => {
             imageUrl: '',
             date: new Date().getTime()
         }
-
+        
         const doc = await db.collection(`${uid}/journal/notes`).add(newNotes)
-
+        
         dispatch(activeNote(doc.id, newNotes));
+        
+        dispatch(finishLoading());
     }
 }
 

@@ -26,7 +26,7 @@ export const ListaTareas = () => {
                 </h3>
                 <p className="mt-1 text-sm leading-5 text-gray-500">
                   Organice sus actividades por tareas y experimente un
-                  rendimiento en su trabajo maás efectivo.
+                  rendimiento en su trabajo más efectivo.
                 </p>
               </div>
               <div className="flex-shrink-0 mt-2 ml-4">
