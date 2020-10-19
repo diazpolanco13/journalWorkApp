@@ -5,9 +5,6 @@ import notImage from "../../../assets/img/sin_imagen.png";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import 'moment/locale/es';
-import { useForm } from "../../../hooks/useForm";
-import { useEffect } from "react";
-import { useRef } from "react";
 
 
 export const SidebarDetalles = () => {
@@ -16,22 +13,12 @@ export const SidebarDetalles = () => {
     const { active: note } = useSelector(state => state.notes)
     
     
-    const { id } = note || {}
-    const [formValues, handleInputChange, reset] = useForm(note);
+    const { date, description, imageUrl, complete, title } = note || {}
     
-    const {date, description, imageUrl, complete, title } = formValues || {};
     
     const noteDate = moment(date);
 
-    const activeId = useRef(id)
     
-    useEffect(() => {
-      if (id !== activeId.current) {
-        reset(note)
-        activeId.current = id
-      }
-      
-    }, [id, reset, note])
 
     const handleEdition = () => {
       setIsOn(true)
