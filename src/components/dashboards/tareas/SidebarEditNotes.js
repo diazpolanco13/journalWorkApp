@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { Transition } from "@headlessui/react";
 import { TransitionContext } from "../../context/TransitionContext";
-import { activeNote, startNewNotes, startUploading } from "../../../actions/notesAction";
+import { activeNote, startSaveNotes, startUploading } from "../../../actions/notesAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../../hooks/useForm";
 
 
 
-export const SidebarDeTareas = () => {
-  const { isOn, setIsOn } = useContext(TransitionContext);
+export const SidebarEditNotes = () => {
+  const { editOn, setEditOn } = useContext(TransitionContext);
   
   const { active: note } = useSelector(state => state.notes)
   
@@ -17,7 +17,9 @@ export const SidebarDeTareas = () => {
   const [formValues, handleInputChange, reset] = useForm(note);
   const dispatch = useDispatch();
 
-  const {description, title } = formValues || {};
+  const {description, title, complete, cancel } = formValues || {};
+
+  // console.log(description, title, complete, cancel)
 
   const activeId = useRef(id)
   useEffect(() => {
@@ -35,6 +37,11 @@ export const SidebarDeTareas = () => {
   }, [dispatch, formValues])
 
 
+  const handleSave = () => {
+    dispatch(startSaveNotes(note));
+    setEditOn(false)
+  }
+
   const handlePictureClick = () => {
     document.querySelector('#fileSelector').click();
   }
@@ -45,12 +52,6 @@ export const SidebarDeTareas = () => {
       dispatch(startUploading(file))
     }
   }
-  const handleAddNew = () => { 
-    dispatch(startNewNotes())
-    setIsOn(false)
-  }
-
-
 
 
   return (
@@ -60,7 +61,7 @@ export const SidebarDeTareas = () => {
             <section className="absolute inset-y-0 right-0 flex-1 max-w-full">
               {/*Slide-over panel, show/hide based on slide-over state.*/}
               <Transition
-                show={isOn}
+                show={editOn}
                 appear={true}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"
                 enterFrom="translate-x-full"
@@ -72,16 +73,16 @@ export const SidebarDeTareas = () => {
                 <div className="w-screen max-w-md">
                   <div className="flex flex-col h-full bg-white divide-y divide-gray-200 shadow-xl">
                     <div className="flex-1 h-0 overflow-y-auto">
-                      <header className="px-4 py-6 space-y-1 bg-gray-900 sm:px-6">
+                      <header className="px-4 py-6 space-y-1 bg-orange-700 sm:px-6">
                         <div className="flex items-center justify-between space-x-3">
                           <h2 className="text-lg font-medium leading-7 text-white">
-                            Nueva tarea
+                            Editar tarea
                           </h2>
                           <div className="flex items-center h-7">
                             <button
-                              onClick={() => setIsOn(!isOn)}
+                              onClick={() => setEditOn(!editOn)}
                               aria-label="Close panel"
-                              className="p-1 text-indigo-200 transition duration-150 ease-in-out bg-gray-900 hover:text-white"
+                              className="p-1 text-indigo-200 transition duration-150 ease-in-out bg-orange-700 hover:text-white"
                             >
                               {/* Heroicon name: x */}
                               <svg
@@ -104,8 +105,7 @@ export const SidebarDeTareas = () => {
                         </div>
                         <div>
                           <p className="text-sm leading-5 text-indigo-300">
-                            Por favor ingrese la informacion para gestionar su
-                            nueva tarea
+                            Actualice la informacion de su tarea.
                           </p>
                         </div>
                       </header>
@@ -213,7 +213,7 @@ export const SidebarDeTareas = () => {
                                           aria-describedby="privacy_public_description"
                                           type="radio"
                                           name="complete"
-                                          value={true}
+                                          value={!complete}
                                           onChange={handleInputChange}
                                           className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
                                         />
@@ -235,7 +235,7 @@ export const SidebarDeTareas = () => {
                                       aria-describedby="privacy_private-to-project_description"
                                       type="radio"
                                       name="complete"
-                                      value={false}
+                                      value={!cancel}
                                       onChange={handleInputChange}
                                       className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio" />
                                       </div>
@@ -316,7 +316,7 @@ export const SidebarDeTareas = () => {
                       <span className="inline-flex rounded-md shadow-sm">
                         <button
                           type="submit"
-                          onClick={handleAddNew}
+                          onClick={handleSave}
                           className="inline-flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-gray-600 border border-transparent rounded-md hover:bg-gray-500 focus:outline-none focus:border-gay-700 focus:shadow-outline-indigo active:bg-gray-700"
                         >
                           Guardar

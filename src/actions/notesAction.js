@@ -13,14 +13,10 @@ export const startNewNotes = ( note ) => {
         
         const { uid } = getState().auth;
 
-        if ( !note.url ){
-            delete note.url;
-        }
-        
         const newNotes = {
             title: '',
             description: '',
-            incomplete: false,
+            cancel: false,
             complete: false,
             imageUrl: '',
             date: new Date().getTime()
@@ -122,7 +118,9 @@ export const startUploading = ( file ) => {
         const fileUrl = await fileUpload( file );
         activeNote.imageUrl = fileUrl;
 
-        dispatch(startSaveNotes( activeNote  ))
+
+        //se desactiva esta opcion porque guarda la nota completa antes de tiempo
+        // dispatch(startSaveNotes( activeNote  ))
 
         Swal.close();
     }

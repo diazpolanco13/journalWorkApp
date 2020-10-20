@@ -9,7 +9,7 @@ import 'moment/locale/es';
 
 export const SidebarDetalles = () => {
     const { detallesOn, setDetallesOn } = useContext(TransitionContext);
-    const { setIsOn } = useContext(TransitionContext);
+    const { setEditOn } = useContext(TransitionContext);
     const { active: note } = useSelector(state => state.notes)
     
     
@@ -21,14 +21,14 @@ export const SidebarDetalles = () => {
     
 
     const handleEdition = () => {
-      setIsOn(true)
+      setEditOn(true)
       setDetallesOn(false)
 
     }
     
   return (
     <div>
-      <section className="absolute inset-y-0 right-0 flex max-w-full pl-0 sm:pl-0">
+      <section className="absolute inset-y-0 right-0 flex-1 max-w-full">
         <Transition
           show={detallesOn}
           appear={true}

@@ -15,6 +15,7 @@ export const JournalWork = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [isOn, setIsOn] = useState(false);
   const [detallesOn, setDetallesOn] = useState(false);
+  const [editOn, setEditOn] = useState(false);
 
   return (
     <>
@@ -29,6 +30,8 @@ export const JournalWork = () => {
             setIsOn,
             detallesOn,
             setDetallesOn,
+            editOn,
+            setEditOn
           }}
         >
           {/*  El componente <SidebarMovil/> se ocultara cuando la pantalla sea menor  a  768px (hidden md:flex)*/}
