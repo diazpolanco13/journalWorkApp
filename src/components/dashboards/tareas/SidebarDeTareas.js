@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { Transition } from "@headlessui/react";
 import { ListaTareas } from "./ListaTareas";
 import { TransitionContext } from "../../context/TransitionContext";
-import { activeNote, startSaveNotes } from "../../../actions/notesAction";
+import { activeNote, startSaveNotes, startUploading } from "../../../actions/notesAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../../hooks/useForm";
 
@@ -41,8 +41,16 @@ export const SidebarDeTareas = () => {
     setIsOn(false)
   }
 
+  const handlePictureClick = () => {
+    document.querySelector('#fileSelector').click();
+  }
 
-
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      dispatch(startUploading(file))
+    }
+  }
   // const handleAddNew = () => { 
   //   dispatch(startNewNotes())
     
@@ -256,8 +264,16 @@ export const SidebarDeTareas = () => {
                                 htmlFor="cover_photo"
                                 className="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
                               >
-                                Foto
+                              Foto
                               </label>
+                            <input
+                              type="file"
+                              id="fileSelector"
+                              name="file"
+                              style={{ display: 'none' }}
+                              onChange={handleFileChange}
+                            
+                            />
                               <div className="mt-2 sm:mt-0 sm:col-span-2">
                                 <div className="flex justify-center max-w-lg px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                   <div className="text-center">
@@ -277,6 +293,7 @@ export const SidebarDeTareas = () => {
                                     <p className="mt-1 text-sm text-gray-600">
                                       <button
                                         type="button"
+                                        onClick={handlePictureClick}
                                         className="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline"
                                       >
                                         Subir archivo
