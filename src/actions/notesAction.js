@@ -24,11 +24,18 @@
             const doc = await db.collection(`${uid}/journal/notes`).add(newNotes)
             
             dispatch(activeNote(doc.id, newNotes));
+            dispatch(addNewNote(doc.id, newNotes));
 
-            
         }
-}
-    
+    }
+ //1.1 -  Actualiza todas las notas con la nueva nota   
+    export const addNewNote = (id, note) => ({
+        type: types.notesAddNew,
+        payload: {
+            id, 
+            ...note
+        }
+    })
 
 // 2- Accion para cargar las nota ACTIVA o seleccionada
     export const activeNote = ( id, note ) => ({
@@ -96,7 +103,7 @@
     });
 
 
-// 5-
+// 5- Action para actualizar la subida de imagenes en la nota
 
     export const startUploading = ( file ) => {
         return async (dispatch, getState) => {
@@ -121,4 +128,57 @@
 
             Swal.close();
         }
+}
+    
+// 6- accion para eliminar las notesActive
+
+    export const startDeleting = ( id ) => {
+        return async (dispatch, getState) => {
+            const { uid } = getState().auth;
+            
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then( async (result) => {
+                if (result.isConfirmed) {
+
+                    try {
+
+                        await db.doc(`${uid}/journal/notes/${id}`).delete();
+                        dispatch(deleteNotes(id))
+                    
+                    } catch (error) {
+                    
+                        console.log(error) 
+                    }
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                        )
+                    }
+                })
+                
+           
+            
+            
+        }
     }
+    
+    export const deleteNotes = (id) => ({
+        type: types.notesDelete,
+            payload: id
+})
+    
+
+// 7- Acciones para purgar las notas al cerrar sesion.-bottom-0
+
+    export const notelogout = ( ) =>( {
+        types: types.notesLogoutCleaning,
+    })

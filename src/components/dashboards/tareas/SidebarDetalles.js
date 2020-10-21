@@ -2,12 +2,14 @@ import { Transition } from "@headlessui/react";
 import React, { useContext } from "react";
 import { TransitionContext } from "../../context/TransitionContext";
 import notImage from "../../../assets/img/sin_imagen.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import 'moment/locale/es';
+import { startDeleting } from "../../../actions/notesAction";
 
 
 export const SidebarDetalles = () => {
+    const dispatch = useDispatch()
     const { detallesOn, setDetallesOn } = useContext(TransitionContext);
     const { setEditOn } = useContext(TransitionContext);
     const { active: note } = useSelector(state => state.notes)
@@ -18,13 +20,17 @@ export const SidebarDetalles = () => {
     
     const noteDate = moment(date);
 
-    
-
+//Manejador de estados del sidebar, (activa la edicion y cierra el detalle)
     const handleEdition = () => {
       setEditOn(true)
       setDetallesOn(false)
-
     }
+ 
+// manejador de funcion de eliminacion de nota activa
+    const handleDelete = () => {
+        dispatch(startDeleting(note.id))
+      
+      }
     
   return (
     <div>
@@ -111,6 +117,7 @@ export const SidebarDetalles = () => {
                           <span className="inline-flex flex-1 w-full mt-3 rounded-md shadow-sm sm:mt-0 sm:ml-3">
                             <button
                               type="button"
+                              onClick={handleDelete}
                               className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-red-600 border border-gray-300 rounded-md hover:bg-red-500 focus:outline-none focus:border-red-300 focus:shadow-outline-blue active:text-red-800 active:bg-red-50"
                             >
                               Eliminar
