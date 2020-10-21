@@ -23,13 +23,12 @@ export const SidebarEditNotes = () => {
   const activeId = useRef(id);
   
   
-  //efect para detectar el cambio de tareas
+  //efect para detectar el cambio de la tarea activa
   useEffect(() => {
     if (id !== activeId.current) {
       reset(note)
       activeId.current = id
-    }
-    
+    };
   }, [id, reset, note])
   
   
@@ -38,8 +37,9 @@ export const SidebarEditNotes = () => {
     dispatch(activeNote(
       activeId,
       { ...formValues }
-      )
-    );
+        )
+      );
+
   }, [dispatch, formValues]);
 
 

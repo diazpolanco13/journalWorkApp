@@ -2,7 +2,6 @@ import React from 'react'
 import { Menu, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../actions/authActions';
-import { notelogout } from '../../actions/notesAction';
 
 
 
