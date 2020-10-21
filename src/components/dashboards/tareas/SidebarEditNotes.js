@@ -9,19 +9,21 @@ import { useForm } from "../../../hooks/useForm";
 
 export const SidebarEditNotes = () => {
   const { editOn, setEditOn } = useContext(TransitionContext);
-  
-  const { active: note } = useSelector(state => state.notes)
-  
-  
-  const { id } = note || {}
-  const [formValues, handleInputChange, reset] = useForm(note);
+
   const dispatch = useDispatch();
+  
+  const { active: note } = useSelector(state => state.notes);
+
+  const [formValues, handleInputChange, reset] = useForm(note);
 
   const {description, title, complete, cancel } = formValues || {};
+  
+  const { id } = note || {};
 
-  // console.log(description, title, complete, cancel)
-
-  const activeId = useRef(id)
+  const activeId = useRef(id);
+  
+  
+  //efect para detectar el cambio de tareas
   useEffect(() => {
     if (id !== activeId.current) {
       reset(note)
@@ -31,27 +33,32 @@ export const SidebarEditNotes = () => {
   }, [id, reset, note])
   
   
+  //efect para escuchar los cambios de la nota activa
   useEffect(() => {
-    dispatch(activeNote(activeId, { ...formValues }));
+    dispatch(activeNote(
+      activeId,
+      { ...formValues }
+      )
+    );
+  }, [dispatch, formValues]);
 
-  }, [dispatch, formValues])
 
+ //Funcion para guardar los cambios en la base de datos
+ const handleSave = () => {
+  dispatch(startSaveNotes(note));
+  setEditOn(false)
+};
 
-  const handleSave = () => {
-    dispatch(startSaveNotes(note));
-    setEditOn(false)
+const handlePictureClick = () => {
+  document.querySelector('#fileSelector').click();
+};
+
+const handleFileChange = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    dispatch(startUploading(file))
   }
-
-  const handlePictureClick = () => {
-    document.querySelector('#fileSelector').click();
-  }
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      dispatch(startUploading(file))
-    }
-  }
+};
 
 
   return (

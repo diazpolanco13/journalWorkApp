@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { activeNote } from "../../../actions/notesAction";
 
 
-export const Tarea = ({ id, date, description, imageUrl, complete, incomplete, title }) => {
+export const Tarea = ({ id, date, description, imageUrl, complete, title }) => {
   const { setDetallesOn } = useContext(TransitionContext);
 
   

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {startNewNotes} from '../../../actions/notesAction'
 import { TransitionContext } from "../../context/TransitionContext";
 import {SinTareas} from '../tareas/SinTareas'
 import { LoadingTareas } from "./LoadingTareas";
@@ -8,12 +9,15 @@ import { Tarea } from "./Tarea";
 export const ListaTareas = () => {
 
   const { isOn, setIsOn } = useContext(TransitionContext);
-  
   const { notes } = useSelector((state) => state.notes);
-  
   const { loading } = useSelector((state) => state.ui);
+  const dispatch = useDispatch()
 
-
+  const handleAddNew = () => {
+    setIsOn(!isOn)
+    dispatch(startNewNotes())
+ 
+  }
   return (
     <>
       <div className="flex mx-auto">
@@ -33,7 +37,7 @@ export const ListaTareas = () => {
               <div className="flex-shrink-0 mt-2 ml-4">
                 <span className="inline-flex rounded-md shadow-sm">
                   <button
-                    onClick={() => setIsOn(!isOn)}
+                    onClick={handleAddNew}
                     type="button"
                     className="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white bg-gray-600 border border-transparent rounded-md hover:bg-gray-500 focus:outline-none focus:shadow-outline-indigo focus:border-gray-700 active:bg-gray-700"
                   >

@@ -1,22 +1,4 @@
 import { types } from "../types/types"
-/* 
-    El objeto que se piensa majear en este reducer 
-    tiene estas caracteristicas
-    {
-    notes: [],
-    active: null,
-    active: {
-        id: 'lasnldadlnnadsladsdansl',
-        title: '',
-        description: '',
-        incomplete: false,
-        complete: false,
-        imageUrl: '',
-        date: 
-        }
-    }
-
-*/
 
 
 const initialState = {

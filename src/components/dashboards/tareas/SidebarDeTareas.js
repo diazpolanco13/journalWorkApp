@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { Transition } from "@headlessui/react";
 import { TransitionContext } from "../../context/TransitionContext";
-import { activeNote, startNewNotes, startUploading } from "../../../actions/notesAction";
+import { activeNote, startSaveNotes, startUploading } from "../../../actions/notesAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../../hooks/useForm";
 
@@ -10,16 +10,20 @@ import { useForm } from "../../../hooks/useForm";
 export const SidebarDeTareas = () => {
   const { isOn, setIsOn } = useContext(TransitionContext);
   
-  const { active: note } = useSelector(state => state.notes)
-  
-  
-  const { id } = note || {}
-  const [formValues, handleInputChange, reset] = useForm(note);
   const dispatch = useDispatch();
 
-  const {description, title } = formValues || {};
+  const { active: note } = useSelector(state => state.notes)
 
+
+  const [formValues, handleInputChange, reset] = useForm(note);
+  
+  const {description, title, complete, cancel } = formValues || {};
+
+  
+  const { id } = note || {}
   const activeId = useRef(id)
+  
+  //efect para detectar el cambio de tareas
   useEffect(() => {
     if (id !== activeId.current) {
       reset(note)
@@ -28,33 +32,34 @@ export const SidebarDeTareas = () => {
     
   }, [id, reset, note])
   
-  
+  //efect para escuchar los cambios de la nota activa
   useEffect(() => {
-    dispatch(activeNote(activeId, { ...formValues }));
+    dispatch(activeNote(
+      activeId,
+      { ...formValues }
+      )
+    );
+  }, [dispatch, formValues]);
 
-  }, [dispatch, formValues])
-
+  //Funcion para guardar los cambios en la base de datos
+  const handleSave = () => {
+    dispatch(startSaveNotes(note));
+    setIsOn(false)
+  };
 
   const handlePictureClick = () => {
     document.querySelector('#fileSelector').click();
-  }
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       dispatch(startUploading(file))
     }
-  }
-  const handleAddNew = () => { 
-    dispatch(startNewNotes())
-    setIsOn(false)
-  }
+  };
 
-
-
-
-  return (
-    <>
+      return (
+        <>
       
           {/* <ListaTareas /> */}
             <section className="absolute inset-y-0 right-0 flex-1 max-w-full">
@@ -235,7 +240,7 @@ export const SidebarDeTareas = () => {
                                       aria-describedby="privacy_private-to-project_description"
                                       type="radio"
                                       name="complete"
-                                      value={false}
+                                      value={true}
                                       onChange={handleInputChange}
                                       className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio" />
                                       </div>
@@ -316,7 +321,7 @@ export const SidebarDeTareas = () => {
                       <span className="inline-flex rounded-md shadow-sm">
                         <button
                           type="submit"
-                          onClick={handleAddNew}
+                          onClick={handleSave}
                           className="inline-flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-gray-600 border border-transparent rounded-md hover:bg-gray-500 focus:outline-none focus:border-gay-700 focus:shadow-outline-indigo active:bg-gray-700"
                         >
                           Guardar

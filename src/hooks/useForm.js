@@ -1,3 +1,5 @@
+
+
 import { useState } from "react";
 
 export const useForm = (initialState = {}) => {
@@ -13,5 +15,6 @@ export const useForm = (initialState = {}) => {
       [target.name]: target.value,
     });
   };
+
   return [values, handleInputChange, reset];
 };
