@@ -24,8 +24,7 @@
             const doc = await db.collection(`${uid}/journal/notes`).add(newNotes)
             
             dispatch(activeNote(doc.id, newNotes));
-            dispatch(addNewNote(doc.id, newNotes));
-
+            // dispatch(addNewNote(doc.id, newNotes))
         }
     }
  //1.1 -  Actualiza todas las notas con la nueva nota   

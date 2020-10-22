@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { Transition } from "@headlessui/react";
 import { TransitionContext } from "../../context/TransitionContext";
-import { activeNote, startSaveNotes, startUploading } from "../../../actions/notesAction";
+import { activeNote, addNewNote, startSaveNotes, startUploading } from "../../../actions/notesAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../../hooks/useForm";
 
@@ -44,6 +44,7 @@ export const SidebarDeTareas = () => {
   //Funcion para guardar los cambios en la base de datos
   const handleSave = () => {
     dispatch(startSaveNotes(note));
+    dispatch(addNewNote(id, note))
     setIsOn(false)
   };
 
