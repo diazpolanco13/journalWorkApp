@@ -43,14 +43,15 @@ export const JournalWork = () => {
           <div className="flex flex-col flex-1 w-0 overflow-hidden">
             <NavBar />
 
-            <Switch>
-              <Route selected exact path="/" component={Tablero} />
-              <Route path="/equipo" component={Equipo} />
-              <Route path="/vehiculos" component={Vehiculos} />
-              <Route path="/historial" component={Historial} />
-              <Route path="/reportes" component={Reportes} />
-              <Route path="/tareas" component={PanelDeTareas} />
-            </Switch>
+              <Switch>
+                <Route selected exact path="/" component={Tablero} />
+                <Route path="/equipo" component={Equipo} />
+                <Route path="/vehiculos" component={Vehiculos} />
+                <Route path="/historial" component={Historial} />
+                <Route path="/reportes" component={Reportes} />
+                <Route path="/tareas" component={PanelDeTareas} />
+              </Switch>
+
           </div>
         </TransitionContext.Provider>
       </div>

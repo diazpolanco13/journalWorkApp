@@ -17,4 +17,6 @@ export const types = {
   notesDelete: '[Notes] Delete note',
   notesLogoutCleaning: '[Notes] Logout Cleaning',
 
+  showSidebarType: '[Transition] Show Sidebar',
+  hideSidebarType: '[Transition] Hide Sidebar'
 }
