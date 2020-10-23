@@ -24,8 +24,7 @@
             const doc = await db.collection(`${uid}/journal/notes`).add(newNotes)
             
             dispatch(activeNote(doc.id, newNotes));
-            dispatch(addNewNote(doc.id, newNotes));
-
+            // dispatch(addNewNote(doc.id, newNotes))
         }
     }
  //1.1 -  Actualiza todas las notas con la nueva nota   
@@ -85,7 +84,7 @@
                 
                 dispatch(refreshNote(note.id, note));
 
-                Swal.fire('Saved', note.title, 'success');
+                Swal.fire('Guardado', note.title, 'success');
                 
             } catch (error) {
                 console.log(error)
@@ -111,8 +110,8 @@
             const { active: activeNote } = getState().notes;
             
             Swal.fire({
-                title: 'Uploading...',
-                text: 'Please wait...',
+                title: 'Subiendo...',
+                text: 'Espere por favor...',
                 allowOutsideClick: false,
                 onBeforeOpen: () => {
                     Swal.showLoading();
@@ -137,13 +136,14 @@
             const { uid } = getState().auth;
             
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: '¿Estas seguro?',
+                text: "Tu no podreas recuperar esta tarea",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                cancelButtonText: 'Cancelar',
+                confirmButtonText: 'Sí, borrar esto!'
             }).then( async (result) => {
                 if (result.isConfirmed) {
 
@@ -158,8 +158,8 @@
                     }
 
                     Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
+                        'Borrada!',
+                        'Tu nota ha sido borrada.',
                         'success'
                         )
                     }
