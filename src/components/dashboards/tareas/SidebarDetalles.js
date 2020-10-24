@@ -9,6 +9,7 @@ import { startDeleting } from "../../../actions/notesAction";
 
 
 export const SidebarDetalles = () => {
+    console.log('SidebarDetalles')
     const dispatch = useDispatch()
     const { detallesOn, setDetallesOn } = useContext(TransitionContext);
     const { setEditOn } = useContext(TransitionContext);
@@ -30,7 +31,7 @@ export const SidebarDetalles = () => {
     const handleDelete = () => {
         dispatch(startDeleting(note.id))
       
-      }
+    }
     
   return (
     <div>

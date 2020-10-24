@@ -8,6 +8,7 @@ import { useForm } from "../../../hooks/useForm";
 
 
 export const SidebarDeTareas = () => {
+  console.log('SidebarDeTareas')
   const { isOn, setIsOn } = useContext(TransitionContext);
   
   const dispatch = useDispatch();
@@ -219,7 +220,7 @@ export const SidebarDeTareas = () => {
                                           aria-describedby="privacy_public_description"
                                           type="radio"
                                           name="complete"
-                                          value={true}
+                                          value={complete}
                                           onChange={handleInputChange}
                                           className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
                                         />
@@ -241,7 +242,7 @@ export const SidebarDeTareas = () => {
                                       aria-describedby="privacy_private-to-project_description"
                                       type="radio"
                                       name="complete"
-                                      value={true}
+                                      value={cancel}
                                       onChange={handleInputChange}
                                       className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio" />
                                       </div>

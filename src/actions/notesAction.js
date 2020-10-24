@@ -150,8 +150,9 @@
                     try {
 
                         await db.doc(`${uid}/journal/notes/${id}`).delete();
+                        
+                        //actualizar la eliminacion de la nota del estate
                         dispatch(deleteNotes(id))
-                    
                     } catch (error) {
                     
                         console.log(error) 
@@ -176,6 +177,6 @@
 
 // 7- Acciones para purgar las notas al cerrar sesion.-bottom-0
 
-    export const notelogout = ( ) =>( {
+    export const notelogout = ( ) => ({
         types: types.notesLogoutCleaning,
     })

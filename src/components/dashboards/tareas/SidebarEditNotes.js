@@ -8,6 +8,7 @@ import { useForm } from "../../../hooks/useForm";
 
 
 export const SidebarEditNotes = () => {
+  console.log('SidebarDetalles')
   const { editOn, setEditOn } = useContext(TransitionContext);
 
   const dispatch = useDispatch();

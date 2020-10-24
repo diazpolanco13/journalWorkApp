@@ -5,6 +5,7 @@ import { SidebarEditNotes } from "./SidebarEditNotes";
 import { ListaTareas } from "./ListaTareas";
 
 export const PanelDeTareas = () => {
+  console.log('panel de tareas')
   return (
     <>
       <main
