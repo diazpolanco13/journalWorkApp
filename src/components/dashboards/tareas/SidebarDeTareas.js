@@ -8,7 +8,6 @@ import { useForm } from "../../../hooks/useForm";
 
 
 export const SidebarDeTareas = () => {
-  console.log('SidebarDeTareas')
   const { isOn, setIsOn } = useContext(TransitionContext);
   
   const dispatch = useDispatch();
