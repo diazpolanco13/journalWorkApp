@@ -14,11 +14,13 @@ export const SidebarDeTareas = () => {
 
   const { active: note } = useSelector(state => state.notes)
 
-
   const [formValues, handleInputChange, reset] = useForm(note);
   
-  const {description, title, complete, cancel } = formValues || {};
+  const {description, title, complete } = formValues || {};
 
+  const rawHandleInputChange = bool => {
+    handleInputChange({ target: { name: 'complete', value: bool }})
+  }
   
   const { id } = note || {}
   const activeId = useRef(id)
@@ -220,7 +222,7 @@ export const SidebarDeTareas = () => {
                                           type="radio"
                                           name="complete"
                                           value={complete}
-                                          onChange={handleInputChange}
+                                          onChange={() => rawHandleInputChange(true)}
                                           className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio"
                                         />
                                     </div>
@@ -241,8 +243,8 @@ export const SidebarDeTareas = () => {
                                       aria-describedby="privacy_private-to-project_description"
                                       type="radio"
                                       name="complete"
-                                      value={cancel}
-                                      onChange={handleInputChange}
+                                      value={complete}
+                                      onChange={() => rawHandleInputChange(false)}
                                       className="w-4 h-4 text-gray-600 transition duration-150 ease-in-out form-radio" />
                                       </div>
                                       <div className="text-sm leading-5 pl-7">
